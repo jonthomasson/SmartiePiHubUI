@@ -1,0 +1,23 @@
+#:kivy 1.10.1
+
+<SmartiePiHub>:
+    BoxLayout:
+        orientation: 'vertical'
+
+        canvas.before:
+            Color:
+                rgb: .6, .6, .6
+            Rectangle:
+                size: self.size 
+    
+        ActionBar:
+
+            ActionView:
+                id: av
+                ActionPrevious:
+                    title: 'Smartie Pi'
+                ActionButton:
+                    text: 'Settings'
+    
+        ScreenManager:
+            id: sm
