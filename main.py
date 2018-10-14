@@ -9,8 +9,6 @@ from kivy.clock import Clock
 from kivy.animation import Animation
 from kivy.uix.screenmanager import Screen
 
-class SmartiePiHub(Widget):
-    pass
 
 class SmartiePiApp(App):
     current_title = StringProperty()
@@ -18,7 +16,7 @@ class SmartiePiApp(App):
     
     def build(self):
         self.title = 'Smartie Pi Hub'
-        return SmartiePiHub()
+        
 
 if __name__ == '__main__':
     SmartiePiApp().run()

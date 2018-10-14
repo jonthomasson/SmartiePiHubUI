@@ -1,23 +1,40 @@
 #:kivy 1.10.1
 
-<SmartiePiHub>:
-    BoxLayout:
-        orientation: 'vertical'
+<ActionPreviousNoIcon@ActionPrevious>
+    with_previous: False
+    title: '' ## Try placing text here, only a few pixels should show
+    size_hint: None, None
+    size: 0, 0
 
-        canvas.before:
-            Color:
-                rgb: .6, .6, .6
-            Rectangle:
-                size: self.size 
-    
-        ActionBar:
+BoxLayout:
+    orientation: 'vertical'
 
-            ActionView:
-                id: av
-                ActionPrevious:
-                    title: 'Smartie Pi'
-                ActionButton:
-                    text: 'Settings'
+    canvas.before:
+        Color:
+            rgb: .6, .6, .6
+        Rectangle:
+            size: self.size 
     
-        ScreenManager:
-            id: sm
+    ActionBar:
+
+        ActionView:
+            id: av
+            ActionPreviousNoIcon:
+                on_press: print(self) ## method that will not be called easily
+            ActionButton:
+                font_name: 'Font-Awesome-Solid.ttf'
+                text: u'\uf013' #cog
+
+    ScreenManager:
+        id: sm
+
+    ActionBar:
+
+        ActionView:
+            id: av
+            ActionPreviousNoIcon:
+                on_press: print(self) ## method that will not be called easily
+            ActionButton:
+                font_name: 'Font-Awesome-Solid.ttf'
+                text: u'\uf011' #power on/off
+    
