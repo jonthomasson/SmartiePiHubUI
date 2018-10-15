@@ -1,4 +1,4 @@
-from time import time
+import time
 from kivy.app import App
 from kivy.uix.widget import Widget
 from os.path import dirname, join
@@ -11,11 +11,13 @@ from kivy.uix.screenmanager import Screen
 
 
 class SmartiePiApp(App):
-    current_title = StringProperty()
-    time = NumericProperty(0)
     
     def build(self):
-        self.title = 'Smartie Pi Hub'
+        self.title = 'SmartiePi Hub'
+        Clock.schedule_interval(self.update_clock, 1 / 60.)
+
+    def update_clock(self, dt):
+        self.root.ids.date_and_time.text = time.strftime("%H:%M %p\n%m/%d/%Y")
         
 
 if __name__ == '__main__':
