@@ -1,10 +1,8 @@
 #:kivy 1.10.1
 
-<ActionPreviousNoIcon@ActionPrevious>
-    with_previous: False
-    title: '' ## Try placing text here, only a few pixels should show
-    size_hint: None, None
-    size: 0, 0
+
+
+
 
 BoxLayout:
     orientation: 'vertical'
@@ -14,27 +12,75 @@ BoxLayout:
             rgb: .6, .6, .6
         Rectangle:
             size: self.size 
-    
-    ActionBar:
 
-        ActionView:
-            id: av
-            ActionPreviousNoIcon:
-                on_press: print(self) ## method that will not be called easily
-            ActionButton:
-                font_name: 'Font-Awesome-Solid.ttf'
-                text: u'\uf013' #cog
+    BoxLayout: #top action bar
+
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: '48dp'
+        padding: '2dp'
+
+        canvas:
+            Color:
+                rgb: .3, .3, .3
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            font_name: 'Font-Awesome-Solid.ttf'
+            font_size: '30dp'
+            text: u'\uf013' #cog
+            size_hint_x: None
+            width: self.height
+        Label:
+            font_name: 'membra.ttf'
+            font_size: '30dp'
+            text: 'SmartiePi Hub' 
 
     ScreenManager:
         id: sm
 
-    ActionBar:
+    BoxLayout: #bottom action bar
 
-        ActionView:
-            id: av
-            ActionPreviousNoIcon:
-                on_press: print(self) ## method that will not be called easily
-            ActionButton:
-                font_name: 'Font-Awesome-Solid.ttf'
-                text: u'\uf011' #power on/off
-    
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: '48dp'
+        padding: '2dp'
+
+        canvas:
+            Color:
+                rgb: .3, .3, .3
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        Button:
+            font_name: 'Font-Awesome-Solid.ttf'
+            font_size: '30dp'
+            text: u'\uf011' #power
+            size_hint_x: None
+            width: self.height
+        Label:
+            text: '' #this acts as a spacer between left and right buttons
+        Button:
+            font_name: 'Font-Awesome-Solid.ttf'
+            font_size: '30dp'
+            text: u'\uf240' #battery
+            size_hint_x: None
+            width: self.height
+        Button:
+            font_name: 'Font-Awesome-Solid.ttf'
+            font_size: '30dp'
+            text: u'\uf028' #volume
+            size_hint_x: None
+            width: self.height
+        Button:
+            font_name: 'Font-Awesome-Solid.ttf'
+            font_size: '30dp'
+            text: u'\uf1eb' #wifi
+            size_hint_x: None
+            width: self.height
+        
+        
+        
+
+ 
