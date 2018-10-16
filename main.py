@@ -1,6 +1,7 @@
 import time
 from kivy.app import App
 from kivy.uix.widget import Widget
+from kivy.uix.button import Button
 from os.path import dirname, join
 from kivy.lang import Builder
 from kivy.properties import NumericProperty, StringProperty, BooleanProperty,\
@@ -17,6 +18,13 @@ class SmartiePiApp(App):
         hub = SmartiePiHub()
         self.title = 'SmartiePi Hub'
         Clock.schedule_interval(self.update_clock, 1 / 60.)
+        screen = Screen(name='Title 1')
+        btn1 = Button(text='Hello world 1')
+        screen.add_widget(btn1)
+        sm = hub.ids.sm
+        sm.add_widget(screen)
+        sm.current = 'Title 1'
+
         return hub
         
     def update_clock(self, dt):
