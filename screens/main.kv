@@ -1,7 +1,16 @@
 SmartiePiScreen:
     name: 'Main'
 
-    Button:
-        size_hint_y: None
-        height: '48dp'
-        text: 'Button normal'
+    TabbedPanel:
+        id: tp
+        do_default_tab: False
+
+        TabbedPanelItem:
+            id: tab_messages
+            text: 'Messages'
+        TabbedPanelItem:
+            id: tab_warnings
+            text: 'Warnings'
+        TabbedPanelItem:
+            id: tab_alerts
+            text: 'Alerts'
