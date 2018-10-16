@@ -9,15 +9,18 @@ from kivy.clock import Clock
 from kivy.animation import Animation
 from kivy.uix.screenmanager import Screen
 
+class SmartiePiHub(Widget):
+    pass
 
 class SmartiePiApp(App):
-    
     def build(self):
+        hub = SmartiePiHub()
         self.title = 'SmartiePi Hub'
         Clock.schedule_interval(self.update_clock, 1 / 60.)
-
+        return hub
+        
     def update_clock(self, dt):
-        self.root.ids.date_and_time.text = time.strftime("%H:%M %p\n%m/%d/%Y")
+        self.root.ids.date_and_time.text = time.strftime("%I:%M %p\n%m/%d/%Y")
         
 
 if __name__ == '__main__':

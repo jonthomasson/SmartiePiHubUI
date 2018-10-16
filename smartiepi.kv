@@ -1,88 +1,89 @@
 #:kivy 1.10.1
+  
 
-
-
-
-
-BoxLayout:
-    orientation: 'vertical'
-
-    canvas.before:
-        Color:
-            rgb: .6, .6, .6
-        Rectangle:
-            size: self.size 
-
-    BoxLayout: #top action bar
-
-        orientation: 'horizontal'
-        size_hint_y: None
-        height: '48dp'
-        padding: '2dp'
-
-        canvas:
+<SmartiePiHub>:
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.size #without this the layout does not expand to fill space
+        canvas.before:
             Color:
-                rgb: .3, .3, .3
+                rgb: .6, .6, .6
             Rectangle:
+                size: root.size 
                 pos: self.pos
-                size: self.size
-        Button:
-            font_name: 'Font-Awesome-Solid.ttf'
-            font_size: '30dp'
-            text: u'\uf013' #cog
-            size_hint_x: None
-            width: self.height
-        Label:
-            font_name: 'membra.ttf'
-            font_size: '30dp'
-            text: 'SmartiePi Hub' 
 
-    ScreenManager:
-        id: sm
+        BoxLayout: #top action bar
 
-    BoxLayout: #bottom action bar
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: '48dp'
+            padding: '2dp'
 
-        orientation: 'horizontal'
-        size_hint_y: None
-        height: '48dp'
-        padding: '2dp'
+            canvas:
+                Color:
+                    rgb: .3, .3, .3
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+                    
+            Button:
+                font_name: 'Font-Awesome-Solid.ttf'
+                font_size: '30dp'
+                text: u'\uf013' #cog
+                size_hint_x: None
+                width: self.height
+            Label:
+                font_name: 'membra.ttf'
+                font_size: '30dp'
+                text: 'SmartiePi Hub' 
 
-        canvas:
-            Color:
-                rgb: .3, .3, .3
-            Rectangle:
-                pos: self.pos
-                size: self.size
-        Button:
-            font_name: 'Font-Awesome-Solid.ttf'
-            font_size: '30dp'
-            text: u'\uf011' #power
-            size_hint_x: None
-            width: self.height
-        Label:
-            text: '' #this acts as a spacer between left and right buttons
-        Button:
-            font_name: 'Font-Awesome-Solid.ttf'
-            font_size: '30dp'
-            text: u'\uf240' #battery
-            size_hint_x: None
-            width: self.height
-        Button:
-            font_name: 'Font-Awesome-Solid.ttf'
-            font_size: '30dp'
-            text: u'\uf028' #volume
-            size_hint_x: None
-            width: self.height
-        Button:
-            font_name: 'Font-Awesome-Solid.ttf'
-            font_size: '30dp'
-            text: u'\uf1eb' #wifi
-            size_hint_x: None
-            width: self.height
-        Label:
-            id: date_and_time
-            text: '6:00 AM\n10/15/2018'
-            size_hint_x: None
+        ScreenManager:
+            id: sm
+
+
+        BoxLayout: #bottom action bar
+
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: '48dp'
+            padding: '2dp'
+
+            canvas:
+                Color:
+                    rgb: .3, .3, .3
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+            Button:
+                font_name: 'Font-Awesome-Solid.ttf'
+                font_size: '30dp'
+                text: u'\uf011' #power
+                size_hint_x: None
+                width: self.height
+            Label:
+                text: '' #this acts as a spacer between left and right buttons
+            Button:
+                font_name: 'Font-Awesome-Solid.ttf'
+                font_size: '30dp'
+                text: u'\uf240' #battery
+                size_hint_x: None
+                width: self.height
+            Button:
+                font_name: 'Font-Awesome-Solid.ttf'
+                font_size: '30dp'
+                text: u'\uf028' #volume
+                size_hint_x: None
+                width: self.height
+            Button:
+                font_name: 'Font-Awesome-Solid.ttf'
+                font_size: '30dp'
+                text: u'\uf1eb' #wifi
+                size_hint_x: None
+                width: self.height
+            Label:
+                id: date_and_time
+                text: ''
+                size_hint_x: None
         
         
         
