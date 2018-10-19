@@ -21,7 +21,7 @@ SmartiePiScreen:
                         pos: self.pos
                         size: self.size
                 RecycleView:
-                    data: [{'text':"NodeId:{} MessageId:{} TimeStamp:{}".format(NodeId,MessageId,TimeStamp)} for NodeId,MessageId,TimeStamp in root.rows]
+                    data: [{'text':"NodeId:{} MessageId:{} TimeStamp:{}".format(NodeId,MessageId,TimeStamp)} for NodeId,MessageId,TimeStamp in app.rows]
                     viewclass: "Label"
                     RecycleBoxLayout:
                         default_size: None, dp(56)

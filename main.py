@@ -19,8 +19,8 @@ class SmartiePiHub(Widget):
     pass
 
 class SmartiePiScreen(Screen):
+    app= App.get_running_app()
     fullscreen = BooleanProperty(False)
-    rows = ListProperty([("NodeId","MessageId","TimeStamp")])
 
 class SmartiePiApp(App):
     index = NumericProperty(-1)
