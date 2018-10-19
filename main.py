@@ -9,19 +9,24 @@ from kivy.properties import NumericProperty, StringProperty, BooleanProperty,\
 from kivy.clock import Clock
 from kivy.animation import Animation
 from kivy.uix.screenmanager import Screen
+import sqlite3
+
+con = sqlite3.connect('smartiepi.db')
+cur = con.cursor()
+
 
 class SmartiePiHub(Widget):
     pass
 
 class SmartiePiScreen(Screen):
     fullscreen = BooleanProperty(False)
-
-    
+    rows = ListProperty([("NodeId","MessageId","TimeStamp")])
 
 class SmartiePiApp(App):
     index = NumericProperty(-1)
     current_title = StringProperty()
     screen_names = ListProperty([])
+    rows = ListProperty([("NodeId","MessageId","TimeStamp")])
 
     def build(self):
         hub = SmartiePiHub()
@@ -36,8 +41,13 @@ class SmartiePiApp(App):
         self.available_screens = [join(curdir, 'screens',
             '{}.kv'.format(fn).lower()) for fn in self.available_screens]
         sm.switch_to(self.load_screen(0), direction='left') #load main screen
-
+        self.main_load_tab_data(0)
         return hub
+
+    def main_load_tab_data(self, idx):
+        cur.execute("SELECT NodeId, MessageId, TimeStamp FROM NodeMessages")
+        self.rows = cur.fetchall()
+        print(self.rows)
 
     def go_screen(self, idx):
         self.index = idx
