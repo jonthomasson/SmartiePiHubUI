@@ -1,5 +1,29 @@
 #:kivy 1.10.1
 
+<MessageView>:
+    orientation: 'horizontal'
+    size_hint_y: None
+    height: '48dp'
+    padding: '2dp'
+    canvas:
+        Color:
+            rgba: .3, .3, .3, .3
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Label:
+        text: root.Node
+    Label:
+        text: root.Message
+    Label:
+        text: root.TimeStamp
+    Button:
+        font_name: 'Font-Awesome-Solid.ttf'
+        font_size: '30dp'
+        text: u'\uf1f8' #trash
+        size_hint_x: None
+        width: self.height
+
 SmartiePiScreen:
     name: 'Main'
 
@@ -26,7 +50,7 @@ SmartiePiScreen:
                         pos: self.pos
                         size: self.size
                 MainRecycleView:
-                    viewclass: "Label"
+                    viewclass: "MessageView"
                     
                     RecycleBoxLayout:
                         default_size: None, dp(56)
@@ -34,7 +58,7 @@ SmartiePiScreen:
                         size_hint_y: None
                         height: self.minimum_height
                         orientation: 'vertical'
-
+                    
                         canvas:
                             Color:
                                 rgba: 0, 0, 1, .3

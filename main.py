@@ -14,6 +14,7 @@ from kivy.animation import Animation
 from kivy.uix.screenmanager import Screen
 from kivy.uix.behaviors import FocusBehavior
 from kivy.uix.recycleview.layout import LayoutSelectionBehavior
+from kivy.uix.boxlayout import BoxLayout
 import sqlite3
 
 
@@ -66,13 +67,22 @@ class SmartiePiApp(App):
 class MainRecycleView(RecycleView):
     def __init__(self, **kwargs):
         super(MainRecycleView, self).__init__(**kwargs)
-
-        cur.execute("SELECT NodeId, MessageId, TimeStamp FROM NodeMessages ORDER by Id DESC")
-        #self.rows = cur.fetchall()
-
-        self.data = [{'text':"NodeId:{} MessageId:{} TimeStamp:{}".format(NodeId,MessageId,TimeStamp)} for NodeId,MessageId,TimeStamp in cur.fetchall()]
-        #print(self.data)
+        cur.execute("select n.Name as Node, m.Message, nm.TimeStamp from NodeMessages nm inner join Messages m on nm.MessageId = m.Id inner join Nodes n on n.Id = nm.NodeId order by nm.id desc")
         
+        #cur.execute("select nm.Id as NodeMessageId,n.Name as Node, m.Message, nm.TimeStamp from NodeMessages nm inner join Messages m on nm.MessageId = m.Id inner join Nodes n on n.Id = nm.NodeId order by nm.id desc")
+        rows = cur.fetchall()
+        #self.data = [{'Node':"{some node}"},{'Message':"{some message}"}, {'TimeStamp':"{10/23/2018 6:20AM}"} for Node, Message, TimeStamp in rows]
+        self.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp)} for Node, Message, TimeStamp in rows]
+        #print(rows)
+
+class MessageView(RecycleDataViewBehavior, BoxLayout):
+    
+    Node = StringProperty("")
+    Message = StringProperty("")
+    TimeStamp = StringProperty("")
+
+    index = None
+
 
 if __name__ == '__main__':
     SmartiePiApp().run()
