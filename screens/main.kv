@@ -20,9 +20,17 @@
     Button:
         font_name: 'Font-Awesome-Solid.ttf'
         font_size: '30dp'
+        text: u'\uf06e' #eye
+        size_hint_x: None
+        width: self.height
+        on_release: root.view_node_message(root.NodeMessageId)
+    Button:
+        font_name: 'Font-Awesome-Solid.ttf'
+        font_size: '30dp'
         text: u'\uf1f8' #trash
         size_hint_x: None
         width: self.height
+        on_release: root.delete_node_message(root.NodeMessageId)
 
 SmartiePiScreen:
     name: 'Main'

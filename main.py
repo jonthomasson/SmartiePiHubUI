@@ -67,12 +67,12 @@ class SmartiePiApp(App):
 class MainRecycleView(RecycleView):
     def __init__(self, **kwargs):
         super(MainRecycleView, self).__init__(**kwargs)
-        cur.execute("select n.Name as Node, m.Message, nm.TimeStamp from NodeMessages nm inner join Messages m on nm.MessageId = m.Id inner join Nodes n on n.Id = nm.NodeId order by nm.id desc")
+        cur.execute("select n.Name as Node, m.Message, nm.TimeStamp, nm.Id as NodeMessageId from NodeMessages nm inner join Messages m on nm.MessageId = m.Id inner join Nodes n on n.Id = nm.NodeId order by nm.id desc")
         
         #cur.execute("select nm.Id as NodeMessageId,n.Name as Node, m.Message, nm.TimeStamp from NodeMessages nm inner join Messages m on nm.MessageId = m.Id inner join Nodes n on n.Id = nm.NodeId order by nm.id desc")
         rows = cur.fetchall()
         #self.data = [{'Node':"{some node}"},{'Message':"{some message}"}, {'TimeStamp':"{10/23/2018 6:20AM}"} for Node, Message, TimeStamp in rows]
-        self.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp)} for Node, Message, TimeStamp in rows]
+        self.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId)} for Node, Message, TimeStamp, NodeMessageId in rows]
         #print(rows)
 
 class MessageView(RecycleDataViewBehavior, BoxLayout):
@@ -80,8 +80,15 @@ class MessageView(RecycleDataViewBehavior, BoxLayout):
     Node = StringProperty("")
     Message = StringProperty("")
     TimeStamp = StringProperty("")
+    NodeMessageId = StringProperty("")
 
     index = None
+
+    def delete_node_message(self,data):
+        print(data)
+
+    def view_node_message(self,data):
+        print(data)
 
 
 if __name__ == '__main__':
