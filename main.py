@@ -18,9 +18,8 @@ from kivy.uix.boxlayout import BoxLayout
 import sqlite3
 
 
-con = sqlite3.connect('smartiepi.db')
-cur = con.cursor()
 
+db_file = 'smartiepi.db'
 
 class SmartiePiHub(Widget):
     pass
@@ -65,15 +64,27 @@ class SmartiePiApp(App):
         self.root.ids.date_and_time.text = time.strftime("%I:%M %p\n%m/%d/%Y")
 
 class MainRecycleView(RecycleView):
+   
+
     def __init__(self, **kwargs):
         super(MainRecycleView, self).__init__(**kwargs)
+        
+        self.bind_node_messages()
+
+    def bind_node_messages(self):
+        con = sqlite3.connect(db_file)
+        cur = con.cursor()
+
+        app= App.get_running_app()
         cur.execute("select n.Name as Node, m.Message, nm.TimeStamp, nm.Id as NodeMessageId from NodeMessages nm inner join Messages m on nm.MessageId = m.Id inner join Nodes n on n.Id = nm.NodeId order by nm.id desc")
         
-        #cur.execute("select nm.Id as NodeMessageId,n.Name as Node, m.Message, nm.TimeStamp from NodeMessages nm inner join Messages m on nm.MessageId = m.Id inner join Nodes n on n.Id = nm.NodeId order by nm.id desc")
         rows = cur.fetchall()
-        #self.data = [{'Node':"{some node}"},{'Message':"{some message}"}, {'TimeStamp':"{10/23/2018 6:20AM}"} for Node, Message, TimeStamp in rows]
-        self.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId)} for Node, Message, TimeStamp, NodeMessageId in rows]
-        #print(rows)
+        con.close()
+        #using try block instead of hasattr for attribute checking here because most of the time this will not fail
+        try:
+            app.root.ids.main_view.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId)} for Node, Message, TimeStamp, NodeMessageId in rows]
+        except AttributeError:
+            self.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId)} for Node, Message, TimeStamp, NodeMessageId in rows]
 
 class MessageView(RecycleDataViewBehavior, BoxLayout):
     
@@ -84,8 +95,21 @@ class MessageView(RecycleDataViewBehavior, BoxLayout):
 
     index = None
 
-    def delete_node_message(self,data):
-        print(data)
+    def delete_node_message(self,node_message_id):
+        print(node_message_id)
+        con = sqlite3.connect(db_file)
+        cur = con.cursor()
+
+        app= App.get_running_app()
+        cur.execute("delete from nodemessages where id = {id}".\
+        format(id=node_message_id))
+        
+        con.commit()
+        con.close()
+
+        self.parent.parent.bind_node_messages()
+
+        
 
     def view_node_message(self,data):
         print(data)
