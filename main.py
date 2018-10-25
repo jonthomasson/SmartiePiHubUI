@@ -39,25 +39,33 @@ class SmartiePiApp(App):
         self.title = 'SmartiePi Hub'
         Clock.schedule_interval(self.update_clock, 1 / 60.)
         sm = hub.ids.sm
-        self.screens = {}
-        self.available_screens = sorted([
-            'Main'])
-        self.screen_names = self.available_screens
-        curdir = dirname(__file__)
-        self.available_screens = [join(curdir, 'screens',
-            '{}.kv'.format(fn).lower()) for fn in self.available_screens]
-        sm.switch_to(self.load_screen(0), direction='left') #load main screen
+        screen = self.get_screen_file('Main')
+        sm.add_widget(screen)
+        sm.current = 'Main'
         return hub
-
-    def go_screen(self, idx):
-        self.index = idx
-        self.root.ids.sm.switch_to(self.load_screen(idx), direction='left')
         
-    def load_screen(self, index):
-        if index in self.screens:
-            return self.screens[index]
-        screen = Builder.load_file(self.available_screens[index])
-        self.screens[index] = screen
+    def load_screen(self, screen_name):
+        app= App.get_running_app()
+        sm = app.root.ids.sm
+
+        if sm.has_screen(screen_name):
+            sm.current = screen_name
+        else:
+            screen = self.get_screen_file(screen_name)
+            sm.add_widget(screen)
+            sm.current = screen_name
+
+    def get_screen_file(self, screen_name):
+        con = sqlite3.connect(db_file)
+        cur = con.cursor()
+        curdir = dirname(__file__)
+
+        cur.execute("select FileName from Screens where Name = '{Name}'".\
+        format(Name=screen_name))
+        file_name = cur.fetchone()
+        con.close()
+        
+        screen = Builder.load_file(curdir +  'screens\\' +  file_name[0])
         return screen
 
     def update_clock(self, dt):
@@ -96,7 +104,7 @@ class MessageView(RecycleDataViewBehavior, BoxLayout):
     index = None
 
     def delete_node_message(self,node_message_id):
-        print(node_message_id)
+        #print(node_message_id)
         con = sqlite3.connect(db_file)
         cur = con.cursor()
 
