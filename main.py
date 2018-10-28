@@ -33,8 +33,10 @@ class SmartiePiApp(App):
     current_title = StringProperty()
     screen_names = ListProperty([])
     rows = ListProperty([("NodeId","MessageId","TimeStamp")])
+    
 
     def build(self):
+        self.app=App.get_running_app()
         hub = SmartiePiHub()
         self.title = 'SmartiePi Hub'
         Clock.schedule_interval(self.update_clock, 1 / 60.)
@@ -65,7 +67,7 @@ class SmartiePiApp(App):
         file_name = cur.fetchone()
         con.close()
         
-        screen = Builder.load_file(curdir +  'screens\\' +  file_name[0])
+        screen = Builder.load_file("{}{}\\{}".format(curdir,'screens', file_name[0]))
         return screen
 
     def update_clock(self, dt):
@@ -84,15 +86,15 @@ class MainRecycleView(RecycleView):
         cur = con.cursor()
 
         app= App.get_running_app()
-        cur.execute("select n.Name as Node, m.Message, nm.TimeStamp, nm.Id as NodeMessageId from NodeMessages nm inner join Messages m on nm.MessageId = m.Id inner join Nodes n on n.Id = nm.NodeId order by nm.id desc")
+        cur.execute("select n.Name as Node, m.Message, nm.TimeStamp, nm.Id as NodeMessageId, s.Name as ScreenName from NodeMessages nm inner join Messages m on nm.MessageId = m.Id inner join Nodes n on n.Id = nm.NodeId inner join Screens s on m.ScreenId = s.Id order by nm.id desc")
         
         rows = cur.fetchall()
         con.close()
         #using try block instead of hasattr for attribute checking here because most of the time this will not fail
         try:
-            app.root.ids.main_view.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId)} for Node, Message, TimeStamp, NodeMessageId in rows]
+            app.root.ids.main_view.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName in rows]
         except AttributeError:
-            self.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId)} for Node, Message, TimeStamp, NodeMessageId in rows]
+            self.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName in rows]
 
 class MessageView(RecycleDataViewBehavior, BoxLayout):
     
@@ -100,6 +102,7 @@ class MessageView(RecycleDataViewBehavior, BoxLayout):
     Message = StringProperty("")
     TimeStamp = StringProperty("")
     NodeMessageId = StringProperty("")
+    ScreenName = StringProperty("")
 
     index = None
 
@@ -119,8 +122,9 @@ class MessageView(RecycleDataViewBehavior, BoxLayout):
 
         
 
-    def view_node_message(self,data):
-        print(data)
+    def view_node_message(self, screen_name):
+        self.app=App.get_running_app()
+        self.app.load_screen(screen_name)
 
 
 if __name__ == '__main__':
