@@ -1,22 +1,32 @@
 #:kivy 1.10.1
 
+<MessageDefault>:
+    orientation: 'vertical'
+    padding: '4dp'
+
+    canvas:
+        Color:
+            rgb: 0, 0, 0
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
 SmartiePiScreen:
     name: 'MessageDefault'
 
-    BoxLayout:
-        orientation: 'vertical'
-        padding: '4dp'
+    MessageDefault:
+        
 
-        canvas:
-            Color:
-                rgb: 0, 0, 0
-            Rectangle:
-                pos: self.pos
-                size: self.size
+        BoxLayout:
+            orientation: 'horizontal'
+            padding: '4dp'
 
-        Label:
-            text: 'Node: '
-        Label:
-            text: 'Message: '
-        Label:
-            text: 'TimeStamp: '
+            canvas:
+                Color:
+                    rgb: 0, 0, 0
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label: 
+                text: "Node: {}".format(self.parent.parent.Node)

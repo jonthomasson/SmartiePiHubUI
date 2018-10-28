@@ -27,13 +27,12 @@ class SmartiePiHub(Widget):
 class SmartiePiScreen(Screen):
     app= App.get_running_app()
     fullscreen = BooleanProperty(False)
+    node_message_id = StringProperty()
 
 class SmartiePiApp(App):
     index = NumericProperty(-1)
     current_title = StringProperty()
     screen_names = ListProperty([])
-    rows = ListProperty([("NodeId","MessageId","TimeStamp")])
-    
 
     def build(self):
         self.app=App.get_running_app()
@@ -96,6 +95,26 @@ class MainRecycleView(RecycleView):
         except AttributeError:
             self.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName in rows]
 
+class MessageDefault(BoxLayout):
+    Node = StringProperty()
+
+    def __init__(self, **kwargs):
+        super(MessageDefault, self).__init__(**kwargs)
+
+        con = sqlite3.connect(db_file)
+        cur = con.cursor()
+
+        app= App.get_running_app()
+        cur.execute("select n.Name as Node from NodeMessages nm inner join Messages m on nm.MessageId = m.Id inner join Nodes n on n.Id = nm.NodeId inner join Screens s on m.ScreenId = s.Id order by nm.id desc")
+        
+        node = cur.fetchone()
+        print(node)
+        self.Node = node[0]
+
+        con.close()
+        
+    
+
 class MessageView(RecycleDataViewBehavior, BoxLayout):
     
     Node = StringProperty("")
@@ -107,7 +126,6 @@ class MessageView(RecycleDataViewBehavior, BoxLayout):
     index = None
 
     def delete_node_message(self,node_message_id):
-        #print(node_message_id)
         con = sqlite3.connect(db_file)
         cur = con.cursor()
 
@@ -124,7 +142,10 @@ class MessageView(RecycleDataViewBehavior, BoxLayout):
 
     def view_node_message(self, screen_name):
         self.app=App.get_running_app()
+        sm = self.app.root.ids.sm
+        sm.transition.direction = 'left'
         self.app.load_screen(screen_name)
+
 
 
 if __name__ == '__main__':
