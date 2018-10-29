@@ -97,6 +97,11 @@ class MainRecycleView(RecycleView):
 
 class MessageDefault(BoxLayout):
     node_message_id = StringProperty()
+    node_name = StringProperty()
+    node_message = StringProperty()
+    node_type = StringProperty()
+    node_description = StringProperty()
+    time_stamp = StringProperty()
 
     def __init__(self, **kwargs):
         super(MessageDefault, self).__init__(**kwargs)
@@ -109,10 +114,15 @@ class MessageDefault(BoxLayout):
         cur = con.cursor()
 
         app= App.get_running_app()
-        cur.execute("select n.Name as Node from NodeMessages nm inner join Messages m on nm.MessageId = m.Id inner join Nodes n on n.Id = nm.NodeId inner join Screens s on m.ScreenId = s.Id order by nm.id desc")
+        cur.execute("select n.Name as Node, m.Message, n.Type, n.Description, nm.TimeStamp  from NodeMessages nm inner join Messages m on nm.MessageId = m.Id inner join Nodes n on n.Id = nm.NodeId inner join Screens s on m.ScreenId = s.Id where nm.Id = {id}".\
+        format(id=self.node_message_id))
         
-        node = cur.fetchone()
-        self.Node = node[0]
+        row = cur.fetchone()
+        self.node_name = row[0]
+        self.node_message = row[1]
+        #self.node_type = row[2]
+        self.node_description = row[3]
+        self.time_stamp = row[4]
 
         con.close()
         
