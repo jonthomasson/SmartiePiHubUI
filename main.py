@@ -74,6 +74,7 @@ class SmartiePiApp(App):
 
 class MainRecycleView(RecycleView):
    
+    
 
     def __init__(self, **kwargs):
         super(MainRecycleView, self).__init__(**kwargs)
@@ -105,7 +106,7 @@ class MessageDefault(BoxLayout):
 
     def __init__(self, **kwargs):
         super(MessageDefault, self).__init__(**kwargs)
-
+        print("message default init")
         #get current node_message_id
         self.app=App.get_running_app()
         self.node_message_id = self.app.node_message_id
@@ -125,6 +126,14 @@ class MessageDefault(BoxLayout):
         self.time_stamp = row[4]
 
         con.close()
+
+    def back_to_messages(self):
+        self.app=App.get_running_app()
+        
+        
+        sm = self.app.root.ids.sm
+        sm.transition.direction = 'right'
+        sm.current = 'Main'
         
     
 

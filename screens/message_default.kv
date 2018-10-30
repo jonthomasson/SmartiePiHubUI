@@ -18,7 +18,7 @@ SmartiePiScreen:
         
 
         BoxLayout:
-            orientation: 'horizontal'
+            orientation: 'vertical'
             padding: '4dp'
 
             canvas:
@@ -29,4 +29,13 @@ SmartiePiScreen:
                     size: self.size
 
             Label: 
-                text: "Node: {}".format(self.parent.parent.time_stamp)
+                text: "Node: {}".format(self.parent.parent.node_name)
+            Label: 
+                text: "Description: {}".format(self.parent.parent.node_description)
+            Label: 
+                text: "Message: {}".format(self.parent.parent.node_message)
+            Label: 
+                text: "TimeStamp: {}".format(self.parent.parent.time_stamp)
+            Button:
+                text: "Back"
+                on_release: self.parent.parent.back_to_messages()
