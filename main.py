@@ -72,6 +72,8 @@ class SmartiePiApp(App):
     def update_clock(self, dt):
         self.root.ids.date_and_time.text = time.strftime("%I:%M %p\n%m/%d/%Y")
 
+
+
 class MainRecycleView(RecycleView):
    
     
@@ -96,6 +98,11 @@ class MainRecycleView(RecycleView):
         except AttributeError:
             self.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName in rows]
 
+class MessageDefaultScreen(SmartiePiScreen):
+    
+    def on_enter(self):
+        print("got to on_enter")
+        
 class MessageDefault(BoxLayout):
     node_message_id = StringProperty()
     node_name = StringProperty()
