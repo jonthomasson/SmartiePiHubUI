@@ -72,18 +72,12 @@ class SmartiePiApp(App):
     def update_clock(self, dt):
         self.root.ids.date_and_time.text = time.strftime("%I:%M %p\n%m/%d/%Y")
 
-
-
-class MainRecycleView(RecycleView):
-   
+class MainScreen(SmartiePiScreen):
     
+    def on_enter(self):
+        Clock.schedule_once(self.bind_node_messages,0)
 
-    def __init__(self, **kwargs):
-        super(MainRecycleView, self).__init__(**kwargs)
-        
-        self.bind_node_messages()
-
-    def bind_node_messages(self):
+    def bind_node_messages(self, dt):
         con = sqlite3.connect(db_file)
         cur = con.cursor()
 
@@ -92,18 +86,28 @@ class MainRecycleView(RecycleView):
         
         rows = cur.fetchall()
         con.close()
+        
         #using try block instead of hasattr for attribute checking here because most of the time this will not fail
         try:
-            app.root.ids.main_view.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName in rows]
+            main_view = self.ids.main_view
+        #main_view.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName in rows]
         except AttributeError:
-            self.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName in rows]
+            main_view = app.root.ids.main_view
+            
+        main_view.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName in rows]
+
+
+class MainRecycleView(RecycleView):
+    pass
+    
+
+    #def __init__(self, **kwargs):
+    #    super(MainRecycleView, self).__init__(**kwargs)
+        
+    #    self.bind_node_messages()
+
 
 class MessageDefaultScreen(SmartiePiScreen):
-    
-    def on_enter(self):
-        print("got to on_enter")
-        
-class MessageDefault(BoxLayout):
     node_message_id = StringProperty()
     node_name = StringProperty()
     node_message = StringProperty()
@@ -111,9 +115,11 @@ class MessageDefault(BoxLayout):
     node_description = StringProperty()
     time_stamp = StringProperty()
 
-    def __init__(self, **kwargs):
-        super(MessageDefault, self).__init__(**kwargs)
-        print("message default init")
+    def on_enter(self):
+        Clock.schedule_once(self.bind_node_message,0)
+        #print("got to message default on_enter")
+
+    def bind_node_message(self, dt):
         #get current node_message_id
         self.app=App.get_running_app()
         self.node_message_id = self.app.node_message_id
@@ -141,6 +147,15 @@ class MessageDefault(BoxLayout):
         sm = self.app.root.ids.sm
         sm.transition.direction = 'right'
         sm.current = 'Main'
+
+class MessageDefault(BoxLayout):
+    
+
+    def __init__(self, **kwargs):
+        super(MessageDefault, self).__init__(**kwargs)
+       
+
+    
         
     
 
@@ -165,7 +180,8 @@ class MessageView(RecycleDataViewBehavior, BoxLayout):
         con.commit()
         con.close()
 
-        self.parent.parent.bind_node_messages()
+        #app.root.ids.main_screen.bind_node_messages()
+        self.parent.parent.parent.parent.parent.parent.bind_node_messages(0)
 
         
 

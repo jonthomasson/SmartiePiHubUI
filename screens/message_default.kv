@@ -29,13 +29,13 @@ MessageDefaultScreen:
                     size: self.size
 
             Label: 
-                text: "Node: {}".format(self.parent.parent.node_name)
+                text: "Node: {}".format(self.parent.parent.parent.node_name)
             Label: 
-                text: "Description: {}".format(self.parent.parent.node_description)
+                text: "Description: {}".format(self.parent.parent.parent.node_description)
             Label: 
-                text: "Message: {}".format(self.parent.parent.node_message)
+                text: "Message: {}".format(self.parent.parent.parent.node_message)
             Label: 
-                text: "TimeStamp: {}".format(self.parent.parent.time_stamp)
+                text: "TimeStamp: {}".format(self.parent.parent.parent.time_stamp)
             Button:
                 text: "Back"
-                on_release: self.parent.parent.back_to_messages()
+                on_release: self.parent.parent.parent.back_to_messages()
