@@ -44,7 +44,7 @@ MainScreen:
             id: tab_messages
             font_name: 'Font-Awesome-Solid.ttf'
             font_size: '30dp'
-            text: u'\uf118' #smilee
+            text: u'\uf05a' #info circle
 
 
             BoxLayout:
@@ -59,7 +59,7 @@ MainScreen:
                         pos: self.pos
                         size: self.size
                 MainRecycleView:
-                    id: main_view
+                    id: main_view_info
                     viewclass: "MessageView"
                     
                     RecycleBoxLayout:
@@ -84,10 +84,12 @@ MainScreen:
             id: tab_warnings
             font_name: 'Font-Awesome-Solid.ttf'
             font_size: '30dp'
-            text: u'\uf119' #frown
+            text: u'\uf071' #exclamation triangle
 
             BoxLayout:
                 orientation: 'vertical'
+                padding: '4dp'
+
 
                 canvas:
                     Color:
@@ -95,14 +97,35 @@ MainScreen:
                     Rectangle:
                         pos: self.pos
                         size: self.size
+                MainRecycleView:
+                    id: main_view_warn
+                    viewclass: "MessageView"
+                    
+                    RecycleBoxLayout:
+                        default_size: None, dp(56)
+                        default_size_hint: 1, None
+                        size_hint_y: None
+                        height: self.minimum_height
+                        orientation: 'vertical'
+                        spacing: '4dp'
+                    
+                        canvas:
+                            Color:
+                                rgba: 0, 0, 1
+                            Rectangle:
+
+                                pos: self.pos
+                                size: self.size
         TabbedPanelItem:
             id: tab_warnings
             font_name: 'Font-Awesome-Solid.ttf'
             font_size: '30dp'
-            text: u'\uf54c' #skull
+            text: u'\uf06a' #exclamation circle
 
             BoxLayout:
                 orientation: 'vertical'
+                padding: '4dp'
+
 
                 canvas:
                     Color:
@@ -110,3 +133,22 @@ MainScreen:
                     Rectangle:
                         pos: self.pos
                         size: self.size
+                MainRecycleView:
+                    id: main_view_alert
+                    viewclass: "MessageView"
+                    
+                    RecycleBoxLayout:
+                        default_size: None, dp(56)
+                        default_size_hint: 1, None
+                        size_hint_y: None
+                        height: self.minimum_height
+                        orientation: 'vertical'
+                        spacing: '4dp'
+                    
+                        canvas:
+                            Color:
+                                rgba: 0, 0, 1
+                            Rectangle:
+
+                                pos: self.pos
+                                size: self.size
