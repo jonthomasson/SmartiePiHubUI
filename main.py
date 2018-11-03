@@ -86,6 +86,10 @@ class MainScreen(SmartiePiScreen):
         
         rows = cur.fetchall()
         con.close()
+        rows_info = []
+        rows_warn = []
+        rows_alert = []
+
         
         #using try block instead of hasattr for attribute checking here because most of the time this will not fail
         try:
@@ -101,16 +105,22 @@ class MainScreen(SmartiePiScreen):
         for row in rows:
             if row[5] == 1:
                 #info row
+                rows_info.append(row)
+                print(rows_info)
                 print("info row")
             if row[6] == 1:
                 #warn row
+                rows_warn.append(row)
                 print("warn row")
             if row[7] == 1:
                 #alert row
+                rows_alert.append(row)
                 print("alert row")
 
             
-        main_view_info.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName, IsInfo, IsWarn, IsAlert in rows]
+        main_view_info.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName, IsInfo, IsWarn, IsAlert in rows_info]
+        main_view_warn.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName, IsInfo, IsWarn, IsAlert in rows_warn]
+        main_view_alert.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName, IsInfo, IsWarn, IsAlert in rows_alert]
 
 
 class MainRecycleView(RecycleView):
