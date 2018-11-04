@@ -106,16 +106,12 @@ class MainScreen(SmartiePiScreen):
             if row[5] == 1:
                 #info row
                 rows_info.append(row)
-                print(rows_info)
-                print("info row")
             if row[6] == 1:
                 #warn row
                 rows_warn.append(row)
-                print("warn row")
             if row[7] == 1:
                 #alert row
                 rows_alert.append(row)
-                print("alert row")
 
             
         main_view_info.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName, IsInfo, IsWarn, IsAlert in rows_info]

@@ -40,12 +40,13 @@ MainScreen:
         id: tp
         do_default_tab: False
         
+        
         TabbedPanelItem:
             id: tab_messages
             font_name: 'Font-Awesome-Solid.ttf'
             font_size: '30dp'
             text: u'\uf05a' #info circle
-
+            
 
             BoxLayout:
                 orientation: 'vertical'
@@ -54,7 +55,7 @@ MainScreen:
 
                 canvas:
                     Color:
-                        rgb: 0, 0, 0
+                        rgb: .03, .07, .19
                     Rectangle:
                         pos: self.pos
                         size: self.size

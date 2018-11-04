@@ -5,9 +5,11 @@
     ScrollView:
         do_scroll_x: False
         do_scroll_y: False if root.fullscreen else (content.height > root.height - dp(16))
+        
         AnchorLayout:
             size_hint_y: None
             height: root.height if root.fullscreen else max(root.height, content.height)
+            
             GridLayout:
                 id: content
                 cols: 1
@@ -15,6 +17,7 @@
                 padding: '8dp'
                 size_hint: (1, 1) if root.fullscreen else (.8, None)
                 height: self.height if root.fullscreen else self.minimum_height
+                
 
 <SmartiePiHub>:
     BoxLayout:
@@ -22,7 +25,7 @@
         size: root.size #without this the layout does not expand to fill space
         canvas.before:
             Color:
-                rgb: .6, .6, .6
+                rgb: .03, .07, .19
             Rectangle:
                 size: root.size 
                 pos: self.pos
@@ -36,7 +39,7 @@
 
             canvas:
                 Color:
-                    rgb: .3, .3, .3
+                    rgb: .1, .1, .15
                 Rectangle:
                     pos: self.pos
                     size: self.size
@@ -51,6 +54,10 @@
                 font_name: 'membra.ttf'
                 font_size: '30dp'
                 text: 'SmartiePi Hub' 
+            #Image:
+            #    #size_hint: None, None
+            #    height: 80, 80
+            #    source: 'sp_logo.png'
 
         ScreenManager:
             id: sm
@@ -65,7 +72,7 @@
 
             canvas:
                 Color:
-                    rgb: .3, .3, .3
+                    rgb: .1, .1, .15
                 Rectangle:
                     pos: self.pos
                     size: self.size
@@ -76,7 +83,7 @@
                 size_hint_x: None
                 width: self.height
             Label:
-                text: '' #this acts as a spacer between left and right buttons
+                text: 'System Health:' #this acts as a spacer between left and right buttons
             Button:
                 font_name: 'Font-Awesome-Solid.ttf'
                 font_size: '30dp'
