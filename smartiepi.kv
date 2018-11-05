@@ -1,5 +1,5 @@
 #:kivy 1.10.1
-  
+#:include smartiepi_styles.kv
 
 <SmartiePiScreen>:
     ScrollView:
@@ -25,7 +25,7 @@
         size: root.size #without this the layout does not expand to fill space
         canvas.before:
             Color:
-                rgb: .03, .07, .19
+                rgb: root_bg_color
             Rectangle:
                 size: root.size 
                 pos: self.pos
@@ -39,7 +39,7 @@
 
             canvas:
                 Color:
-                    rgb: .1, .1, .15
+                    rgb: actionbar_bg_color
                 Rectangle:
                     pos: self.pos
                     size: self.size
@@ -50,6 +50,8 @@
                 text: u'\uf013' #cog
                 size_hint_x: None
                 width: self.height
+                #background_color: .1, .1, .15
+                
             Label:
                 font_name: 'membra.ttf'
                 font_size: '30dp'
@@ -72,7 +74,7 @@
 
             canvas:
                 Color:
-                    rgb: .1, .1, .15
+                    rgb: actionbar_bg_color
                 Rectangle:
                     pos: self.pos
                     size: self.size

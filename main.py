@@ -18,6 +18,9 @@ from kivy.uix.boxlayout import BoxLayout
 import sqlite3
 
 
+#initialize any default styles here
+#Button.background_normal = ''
+#Button.background_color = 1, .3, .4, .85
 
 db_file = 'smartiepi.db'
 
