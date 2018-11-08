@@ -19,6 +19,7 @@
                 height: self.height if root.fullscreen else self.minimum_height
                 
 
+
 <SmartiePiHub>:
     BoxLayout:
         orientation: 'vertical'
@@ -36,6 +37,7 @@
             size_hint_y: None
             height: '48dp'
             padding: '2dp'
+            spacing: '2dp'
 
             canvas:
                 Color:
@@ -43,19 +45,13 @@
                 Rectangle:
                     pos: self.pos
                     size: self.size
-                    
-            Button:
-                font_name: 'Font-Awesome-Solid.ttf'
-                font_size: '30dp'
+            ActionBarButton:
                 text: u'\uf013' #cog
-                size_hint_x: None
-                width: self.height
-                #background_color: .1, .1, .15
-                
             Label:
                 font_name: 'membra.ttf'
                 font_size: '30dp'
                 text: 'SmartiePi Hub' 
+                color: default_text
             #Image:
             #    #size_hint: None, None
             #    height: 80, 80
@@ -71,43 +67,31 @@
             size_hint_y: None
             height: '48dp'
             padding: '2dp'
-
+            spacing: '2dp'
             canvas:
                 Color:
                     rgb: actionbar_bg_color
                 Rectangle:
                     pos: self.pos
                     size: self.size
-            Button:
-                font_name: 'Font-Awesome-Solid.ttf'
-                font_size: '30dp'
+            ActionBarButton:
                 text: u'\uf011' #power
-                size_hint_x: None
-                width: self.height
             Label:
                 text: 'System Health:' #this acts as a spacer between left and right buttons
-            Button:
-                font_name: 'Font-Awesome-Solid.ttf'
-                font_size: '30dp'
+                color: default_text
+            ActionBarButton:
                 text: u'\uf240' #battery
-                size_hint_x: None
-                width: self.height
-            Button:
-                font_name: 'Font-Awesome-Solid.ttf'
-                font_size: '30dp'
+            ActionBarButton:
                 text: u'\uf028' #volume
-                size_hint_x: None
-                width: self.height
-            Button:
-                font_name: 'Font-Awesome-Solid.ttf'
-                font_size: '30dp'
+            ActionBarButton:
                 text: u'\uf1eb' #wifi
-                size_hint_x: None
-                width: self.height
             Label:
                 id: date_and_time
                 text: ''
                 size_hint_x: None
+                color: default_text
+            
+
         
         
         

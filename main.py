@@ -20,9 +20,11 @@ import sqlite3
 
 #initialize any default styles here
 #Button.background_normal = ''
-#Button.background_color = 1, .3, .4, .85
+#Button.background_normal = 'images/button.png'
+#Button.background_color = (.1, .1, .15)
+#Button.border = (30,30,30,30)
 
-db_file = 'smartiepi.db'
+db_file = 'data/smartiepi.db'
 
 class SmartiePiHub(Widget):
     pass

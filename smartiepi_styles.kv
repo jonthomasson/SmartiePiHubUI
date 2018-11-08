@@ -3,8 +3,19 @@
 #root level styles
 #:set root_bg_color (.03, .07, .19)
 #:set actionbar_bg_color (.1, .1, .15)
+#:set actionbar_color (.15, .47, .77,1)
+#:set default_text (1, 1, 1,1)
+
+
 
 #mainscreen
 #:set messageview_bg_color (.39, .72, .89)
 #:set mainscreen_bg_color (.03, .07, .19)
 
+<ActionBarButton@Button>:
+    font_name: 'Font-Awesome-Solid.ttf'
+    font_size: '30dp'
+    color: actionbar_color
+    size_hint_x: None
+    width: self.height
+    background_normal: 'images/ab_button1.png'

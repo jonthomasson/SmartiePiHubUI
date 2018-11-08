@@ -14,23 +14,18 @@
             size: self.size
     Label:
         text: root.Node
+        color: default_text
     Label:
         text: root.Message
+        color: default_text
     Label:
         text: root.TimeStamp
-    Button:
-        font_name: 'Font-Awesome-Solid.ttf'
-        font_size: '30dp'
+        color: default_text
+    ActionBarButton:
         text: u'\uf06e' #eye
-        size_hint_x: None
-        width: self.height
         on_release: root.view_node_message(root.ScreenName, root.NodeMessageId)
-    Button:
-        font_name: 'Font-Awesome-Solid.ttf'
-        font_size: '30dp'
+    ActionBarButton:
         text: u'\uf1f8' #trash
-        size_hint_x: None
-        width: self.height
         on_release: root.delete_node_message(root.NodeMessageId)
 
 MainScreen:
