@@ -21,10 +21,10 @@
     Label:
         text: root.TimeStamp
         color: default_text
-    ActionBarButton:
+    DefaultButton:
         text: u'\uf06e' #eye
         on_release: root.view_node_message(root.ScreenName, root.NodeMessageId)
-    ActionBarButton:
+    DefaultButton:
         text: u'\uf1f8' #trash
         on_release: root.delete_node_message(root.NodeMessageId)
 
@@ -42,7 +42,8 @@ MainScreen:
             font_name: 'Font-Awesome-Solid.ttf'
             font_size: '30dp'
             text: u'\uf05a' #info circle
-
+            #background_normal: ''
+            background_color: (1, 0, 0,1)
             BoxLayout:
                 orientation: 'vertical'
                 padding: '4dp'
@@ -81,7 +82,7 @@ MainScreen:
             font_name: 'Font-Awesome-Solid.ttf'
             font_size: '30dp'
             text: u'\uf071' #exclamation triangle
-
+            color: mainscreen_warning
             BoxLayout:
                 orientation: 'vertical'
                 padding: '4dp'
@@ -117,7 +118,7 @@ MainScreen:
             font_name: 'Font-Awesome-Solid.ttf'
             font_size: '30dp'
             text: u'\uf06a' #exclamation circle
-
+            color: mainscreen_alert
             BoxLayout:
                 orientation: 'vertical'
                 padding: '4dp'

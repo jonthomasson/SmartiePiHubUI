@@ -28,7 +28,7 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.6"
+     inkscape:zoom="2.8"
      inkscape:cx="152.0491"
      inkscape:cy="755.47316"
      inkscape:document-units="px"
@@ -38,7 +38,8 @@
      inkscape:window-height="737"
      inkscape:window-x="-4"
      inkscape:window-y="-4"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     inkscape:object-paths="true" />
   <metadata
      id="metadata4206">
     <rdf:RDF>
@@ -56,12 +57,21 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#071230;fill-opacity:1;stroke:#2579c5;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#0c1f3c;fill-opacity:1;stroke:#2579c5;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4749"
-       width="64"
-       height="64"
+       width="62.5"
+       height="62.5"
        x="108.57143"
-       y="269.50507"
+       y="271.00516"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <rect
+       style="fill:#366091;fill-opacity:1;stroke:#2579c5;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4749-5"
+       width="62.5"
+       height="62.5"
+       x="187.32143"
+       y="271.46936"
        inkscape:export-xdpi="90"
        inkscape:export-ydpi="90" />
   </g>
