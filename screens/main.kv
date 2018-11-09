@@ -6,6 +6,7 @@
     size_hint_y: None
     height: '48dp'
     padding: '2dp'
+    spacing: '4dp'
     canvas:
         Color:
             rgb: messageview_bg_color
@@ -35,20 +36,16 @@ MainScreen:
     TabbedPanel:
         id: tp
         do_default_tab: False
-        
-        
         TabbedPanelItem:
             id: tab_messages
             font_name: 'Font-Awesome-Solid.ttf'
             font_size: '30dp'
             text: u'\uf05a' #info circle
-            #background_normal: ''
-            background_color: (1, 0, 0,1)
+            background_normal: 'images/button_default.png'
+            background_down: 'images/tab_selected.png'
             BoxLayout:
                 orientation: 'vertical'
                 padding: '4dp'
-
-
                 canvas:
                     Color:
                         rgb: mainscreen_bg_color
@@ -83,6 +80,8 @@ MainScreen:
             font_size: '30dp'
             text: u'\uf071' #exclamation triangle
             color: mainscreen_warning
+            background_normal: 'images/button_default.png'
+            background_down: 'images/tab_selected.png'
             BoxLayout:
                 orientation: 'vertical'
                 padding: '4dp'
@@ -119,11 +118,11 @@ MainScreen:
             font_size: '30dp'
             text: u'\uf06a' #exclamation circle
             color: mainscreen_alert
+            background_normal: 'images/button_default.png'
+            background_down: 'images/tab_selected.png'
             BoxLayout:
                 orientation: 'vertical'
                 padding: '4dp'
-
-
                 canvas:
                     Color:
                         rgb: 0, 0, 0
