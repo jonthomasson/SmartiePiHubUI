@@ -52,10 +52,11 @@
                 font_size: '30dp'
                 text: 'SmartiePi Hub' 
                 color: default_text
-            #Image:
-            #    #size_hint: None, None
-            #    height: 80, 80
-            #    source: 'sp_logo.png'
+            Image:
+                size_hint_x: None
+                size: self.size
+                pos: self.pos
+                source: 'images/sp_logo.png'
 
         ScreenManager:
             id: sm

@@ -73,6 +73,17 @@
        x="187.32143"
        y="271.46936"
        inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90" />
+       inkscape:export-ydpi="90"
+       inkscape:export-filename="C:\Users\Stache\Documents\Kivy\smartiepi\images\button_default.png" />
+    <rect
+       style="fill:#1ebcff;fill-opacity:1;stroke:#2579c5;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4749-5-5"
+       width="62.5"
+       height="62.5"
+       x="153.39287"
+       y="201.82648"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"
+       inkscape:export-filename="C:\Users\Stache\Documents\Kivy\smartiepi\images\tab_selected.png" />
   </g>
 </svg>

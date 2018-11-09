@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg9715"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="logo.svg">
+  <defs
+     id="defs9717" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.49497475"
+     inkscape:cx="241.30851"
+     inkscape:cy="876.01265"
+     inkscape:document-units="px"
+     inkscape:current-layer="svg9715"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="737"
+     inkscape:window-x="-4"
+     inkscape:window-y="-4"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata9720">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Layer 2"
+     style="display:inline">
+    <rect
+       style="fill:#e4e83c;fill-opacity:1;stroke:#366091;stroke-width:0;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0"
+       id="rect10399"
+       width="577.80725"
+       height="513.15747"
+       x="74.751289"
+       y="114.94064" />
+  </g>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="display:inline;fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:30;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 291.03409,434.16968 65.65992,-77.78174 65.65991,78.7919"
+       id="path6372"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccc"
+       inkscape:export-filename="C:\Users\Stache\Documents\Kivy\smartiepi\images\sp_logo.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:30;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path6374"
+       sodipodi:type="arc"
+       sodipodi:cx="487.58359"
+       sodipodi:cy="-226.76218"
+       sodipodi:rx="40.450851"
+       sodipodi:ry="25"
+       sodipodi:start="0"
+       sodipodi:end="3.1415927"
+       d="m 528.03444,-226.76218 a 40.450851,25 0 0 1 -20.22543,21.65064 40.450851,25 0 0 1 -40.45085,0 40.450851,25 0 0 1 -20.22542,-21.65064 l 40.45085,0 z"
+       transform="matrix(0.43514619,0.90035981,-0.90035981,0.43514619,0,0)"
+       inkscape:export-filename="C:\Users\Stache\Documents\Kivy\smartiepi\images\sp_logo.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 439.40537,329.98294 -6.41656,-12.83525 22.24296,-3.18245 c 12.23363,-1.75033 22.2884,-3.09161 22.34393,-2.9806 0.0912,0.18227 -31.46284,31.93048 -31.66743,31.86233 -0.0474,-0.0158 -2.97379,-5.80464 -6.5029,-12.86403 z m 7.80313,10.94444 c 0.83854,-0.87145 0.84331,-0.89222 0.0803,-0.3497 -0.44615,0.3172 -0.97337,0.52271 -1.17157,0.45668 -0.60553,-0.20169 -1.45064,-2.07788 -1.23184,-2.73465 0.11333,-0.34024 -0.0317,-0.69784 -0.32235,-0.79467 -0.62661,-0.20879 -9.64332,-17.74194 -9.69503,-18.85219 -0.0208,-0.44658 0.19072,-0.91076 0.50849,-1.11567 0.46045,-0.29696 0.40608,-0.3275 -0.35361,-0.19865 -0.49374,0.0837 -0.93367,0.26018 -0.97761,0.3921 -0.10621,0.31872 11.70529,23.93447 12.02399,24.04065 0.1362,0.0458 0.64897,-0.33434 1.13927,-0.84388 z m 3.85473,-3.78768 0.91922,-0.90714 -1.42384,0.30566 c -1.47597,0.31683 -1.93097,0.57528 -0.9341,0.53056 0.37676,-0.0169 0.50462,0.18025 0.37301,0.57528 -0.24128,0.72431 -0.12223,0.66792 1.06571,-0.50436 z m 25.15755,-25.47674 c -0.0562,-0.11257 -3.28263,0.26154 -7.16967,0.83123 -3.88704,0.56969 -6.95364,1.08266 -6.81469,1.13995 0.13897,0.0572 2.76015,-0.25644 5.82488,-0.69716 3.06474,-0.44071 5.6283,-0.68921 5.69683,-0.55221 0.0685,0.13698 0.41378,0.13675 0.76743,-10e-4 0.54993,-0.21402 0.56413,-0.14081 0.0983,0.50657 -0.29947,0.41621 -1.78103,1.99336 -3.29233,3.50476 -1.5113,1.51142 -2.77887,2.86782 -2.8168,3.01422 -0.0382,0.14634 1.70344,-1.49058 3.86971,-3.63774 2.16626,-2.14716 3.89261,-3.99599 3.83633,-4.10851 z"
+       id="path6396"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Stache\Documents\Kivy\smartiepi\images\sp_logo.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="display:inline;opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:7;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path6398"
+       sodipodi:type="arc"
+       sodipodi:cx="-476.97253"
+       sodipodi:cy="331.68509"
+       sodipodi:rx="27.5"
+       sodipodi:ry="16.995935"
+       sodipodi:start="0"
+       sodipodi:end="3.1415927"
+       sodipodi:open="true"
+       d="m -449.47253,331.68509 a 27.5,16.995935 0 0 1 -13.75,14.71891 27.5,16.995935 0 0 1 -27.5,0 27.5,16.995935 0 0 1 -13.75,-14.71891"
+       transform="matrix(-0.40617508,-0.91379528,0.91379528,-0.40617508,0,0)"
+       inkscape:export-filename="C:\Users\Stache\Documents\Kivy\smartiepi\images\sp_logo.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="display:inline;opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:7.00018549;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path6398-9"
+       sodipodi:type="arc"
+       sodipodi:cx="-509.76746"
+       sodipodi:cy="266.00864"
+       sodipodi:rx="15.522079"
+       sodipodi:ry="9.5720806"
+       sodipodi:start="0"
+       sodipodi:end="3.1415927"
+       sodipodi:open="true"
+       d="m -494.24538,266.00864 a 15.522079,9.5720806 0 0 1 -7.76104,8.28966 15.522079,9.5720806 0 0 1 -15.52208,0 15.522079,9.5720806 0 0 1 -7.76104,-8.28966"
+       transform="matrix(-0.49711838,-0.86768273,0.86251979,-0.50602334,0,0)"
+       inkscape:export-filename="C:\Users\Stache\Documents\Kivy\smartiepi\images\sp_logo.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="display:inline;opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:7.00001955;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path6398-3"
+       sodipodi:type="arc"
+       sodipodi:cx="-476.14764"
+       sodipodi:cy="352.5405"
+       sodipodi:rx="36.708736"
+       sodipodi:ry="22.703405"
+       sodipodi:start="0"
+       sodipodi:end="3.1415927"
+       sodipodi:open="true"
+       d="m -439.43891,352.5405 a 36.708736,22.703405 0 0 1 -18.35437,19.66172 36.708736,22.703405 0 0 1 -36.70873,0 36.708736,22.703405 0 0 1 -18.35437,-19.66172"
+       transform="matrix(-0.40769627,-0.9131176,0.91446994,-0.40465385,0,0)"
+       inkscape:export-filename="C:\Users\Stache\Documents\Kivy\smartiepi\images\sp_logo.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:30;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path6374-3"
+       sodipodi:type="arc"
+       sodipodi:cx="179.95854"
+       sodipodi:cy="414.62796"
+       sodipodi:rx="40.450851"
+       sodipodi:ry="25"
+       sodipodi:start="0"
+       sodipodi:end="3.1415927"
+       d="m 220.40939,414.62796 a 40.450851,25 0 0 1 -20.22542,21.65064 40.450851,25 0 0 1 -40.45085,-10e-6 40.450851,25 0 0 1 -20.22543,-21.65063 l 40.45085,0 z"
+       transform="matrix(-0.43514619,0.90035981,0.90035981,0.43514619,0,0)"
+       inkscape:export-filename="C:\Users\Stache\Documents\Kivy\smartiepi\images\sp_logo.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="display:inline;opacity:1;fill:#ffffff;fill-opacity:1;stroke:#ffffff;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 271.93838,332.10819 6.41656,-12.83525 -22.24297,-3.18245 c -12.23363,-1.75033 -22.28839,-3.09161 -22.34393,-2.9806 -0.0912,0.18227 31.46284,31.93048 31.66743,31.86233 0.0474,-0.0158 2.97379,-5.80464 6.50291,-12.86403 z m -7.80314,10.94444 c -0.83854,-0.87145 -0.8433,-0.89222 -0.0802,-0.3497 0.44615,0.3172 0.97336,0.52271 1.17157,0.45668 0.60553,-0.20169 1.45064,-2.07788 1.23183,-2.73465 -0.11332,-0.34024 0.0317,-0.69784 0.32236,-0.79467 0.6266,-0.20879 9.64332,-17.74194 9.69502,-18.85219 0.0208,-0.44658 -0.19072,-0.91076 -0.50849,-1.11567 -0.46045,-0.29696 -0.40608,-0.3275 0.35362,-0.19865 0.49373,0.0837 0.93367,0.26018 0.97761,0.3921 0.10621,0.31872 -11.70529,23.93447 -12.02399,24.04065 -0.1362,0.0458 -0.64898,-0.33434 -1.13927,-0.84388 z m -3.85473,-3.78768 -0.91921,-0.90714 1.42383,0.30566 c 1.47598,0.31683 1.93097,0.57528 0.9341,0.53056 -0.37675,-0.0169 -0.50461,0.18025 -0.37301,0.57528 0.24129,0.72431 0.12224,0.66792 -1.06571,-0.50436 z m -25.15755,-25.47674 c 0.0562,-0.11257 3.28264,0.26154 7.16967,0.83123 3.88705,0.56969 6.95365,1.08266 6.8147,1.13995 -0.13898,0.0572 -2.76015,-0.25644 -5.82489,-0.69716 -3.06473,-0.44071 -5.6283,-0.68921 -5.69683,-0.55221 -0.0685,0.13698 -0.41377,0.13675 -0.76742,-10e-4 -0.54993,-0.21402 -0.56414,-0.14081 -0.0983,0.50657 0.29947,0.41621 1.78102,1.99336 3.29233,3.50476 1.5113,1.51142 2.77886,2.86782 2.8168,3.01422 0.0382,0.14634 -1.70345,-1.49058 -3.86972,-3.63774 -2.16626,-2.14716 -3.8926,-3.99599 -3.83633,-4.10851 z"
+       id="path6396-6"
+       inkscape:connector-curvature="0"
+       inkscape:export-filename="C:\Users\Stache\Documents\Kivy\smartiepi\images\sp_logo.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="display:inline;opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:7;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path6398-7"
+       sodipodi:type="arc"
+       sodipodi:cx="-189.98445"
+       sodipodi:cy="-319.20071"
+       sodipodi:rx="27.5"
+       sodipodi:ry="16.995935"
+       sodipodi:start="0"
+       sodipodi:end="3.1415927"
+       sodipodi:open="true"
+       d="m -162.48445,-319.20071 a 27.5,16.995935 0 0 1 -13.75,14.71891 27.5,16.995935 0 0 1 -27.5,0 27.5,16.995935 0 0 1 -13.75,-14.71891"
+       transform="matrix(0.40617508,-0.91379528,-0.91379528,-0.40617508,0,0)"
+       inkscape:export-filename="C:\Users\Stache\Documents\Kivy\smartiepi\images\sp_logo.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="display:inline;opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:7.00018549;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path6398-9-9"
+       sodipodi:type="arc"
+       sodipodi:cx="-151.625"
+       sodipodi:cy="-352.30133"
+       sodipodi:rx="15.522079"
+       sodipodi:ry="9.5720806"
+       sodipodi:start="0"
+       sodipodi:end="3.1415927"
+       sodipodi:open="true"
+       d="m -136.10292,-352.30133 a 15.522079,9.5720806 0 0 1 -7.76104,8.28966 15.522079,9.5720806 0 0 1 -15.52208,0 15.522079,9.5720806 0 0 1 -7.76104,-8.28966"
+       transform="matrix(0.49711838,-0.86768273,-0.86251979,-0.50602334,0,0)"
+       inkscape:export-filename="C:\Users\Stache\Documents\Kivy\smartiepi\images\sp_logo.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="display:inline;opacity:1;fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:7.00001955;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="path6398-3-9"
+       sodipodi:type="arc"
+       sodipodi:cx="-190.24155"
+       sodipodi:cy="-297.87003"
+       sodipodi:rx="36.708736"
+       sodipodi:ry="22.703405"
+       sodipodi:start="0"
+       sodipodi:end="3.1415927"
+       sodipodi:open="true"
+       d="m -153.53281,-297.87003 a 36.708736,22.703405 0 0 1 -18.35437,19.66173 36.708736,22.703405 0 0 1 -36.70874,0 36.708736,22.703405 0 0 1 -18.35436,-19.66173"
+       transform="matrix(0.40769627,-0.9131176,-0.91446994,-0.40465385,0,0)"
+       inkscape:export-filename="C:\Users\Stache\Documents\Kivy\smartiepi\images\sp_logo.png"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+  </g>
+</svg>
