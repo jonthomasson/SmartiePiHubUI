@@ -65,7 +65,7 @@
                 size_hint_x: None
                 size: self.size
                 pos: self.pos
-                source: 'images/sp_logo.png'
+                source: 'atlas://images/smartiepi/sp_logo'
 
         ScreenManager:
             id: sm
@@ -86,6 +86,7 @@
                     size: self.size
             ActionBarButton:
                 text: u'\uf011' #power
+                on_release: root.view_node_message(root.ScreenName, root.NodeMessageId)
             Label:
                 text: 'System Health:' #this acts as a spacer between left and right buttons
                 color: default_text
