@@ -30,7 +30,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="2.8"
      inkscape:cx="152.0491"
-     inkscape:cy="755.47316"
+     inkscape:cy="764.29293"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -57,16 +57,17 @@
      inkscape:groupmode="layer"
      id="layer1">
     <rect
-       style="fill:#0c1f3c;fill-opacity:1;stroke:#2579c5;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#0c1f3c;fill-opacity:1;stroke:#1b88ee;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4749"
        width="62.5"
        height="62.5"
        x="108.57143"
        y="271.00516"
        inkscape:export-xdpi="90"
-       inkscape:export-ydpi="90" />
+       inkscape:export-ydpi="90"
+       inkscape:export-filename="C:\Users\Stache\Documents\Kivy\smartiepi\images\ab_button1.png" />
     <rect
-       style="fill:#366091;fill-opacity:1;stroke:#2579c5;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#366091;fill-opacity:1;stroke:#1b88ee;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4749-5"
        width="62.5"
        height="62.5"
@@ -76,7 +77,7 @@
        inkscape:export-ydpi="90"
        inkscape:export-filename="C:\Users\Stache\Documents\Kivy\smartiepi\images\button_default.png" />
     <rect
-       style="fill:#1ebcff;fill-opacity:1;stroke:#2579c5;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#1ebcff;fill-opacity:1;stroke:#1b88ee;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4749-5-5"
        width="62.5"
        height="62.5"

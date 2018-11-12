@@ -2,31 +2,28 @@
 
 <MessageDefault>:
     orientation: 'vertical'
-    padding: '4dp'
+    padding: '2dp'
 
     canvas:
         Color:
-            rgb: 0, 0, 0
+            rgb: actionbar_color
         Rectangle:
             pos: self.pos
             size: self.size
 
 MessageDefaultScreen:
     name: 'MessageDefault'
-
     MessageDefault:
-        
-
         BoxLayout:
             orientation: 'vertical'
             padding: '4dp'
-
             canvas:
                 Color:
-                    rgb: 0, 0, 0
+                    rgb: root_bg_color
                 Rectangle:
                     pos: self.pos
                     size: self.size
+                    #source: 'atlas://images/smartiepi/ab_button1'
 
             Label: 
                 text: "Node: {}".format(self.parent.parent.parent.node_name)
@@ -38,4 +35,6 @@ MessageDefaultScreen:
                 text: "TimeStamp: {}".format(self.parent.parent.parent.time_stamp)
             Button:
                 text: "Back"
+                color: default_text
+                background_normal: 'atlas://images/smartiepi/button_default'
                 on_release: self.parent.parent.parent.back_to_messages()
