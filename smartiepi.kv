@@ -29,6 +29,19 @@
     BubbleButton:
         text: 'Restart'
 
+<SmartieActionBar@BoxLayout>:
+    orientation: 'horizontal'
+    size_hint_y: None
+    height: '48dp'
+    padding: '2dp'
+    spacing: '2dp'
+    canvas:
+        Color:
+            rgb: actionbar_bg_color
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
 <SmartiePiHub>:
     BoxLayout:
         orientation: 'vertical'
@@ -40,20 +53,7 @@
                 size: root.size 
                 pos: self.pos
 
-        BoxLayout: #top action bar
-
-            orientation: 'horizontal'
-            size_hint_y: None
-            height: '48dp'
-            padding: '2dp'
-            spacing: '2dp'
-
-            canvas:
-                Color:
-                    rgb: actionbar_bg_color
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
+        SmartieActionBar: #top action bar
             ActionBarButton:
                 text: u'\uf013' #cog
             Label:
@@ -71,19 +71,7 @@
             id: sm
 
 
-        BoxLayout: #bottom action bar
-
-            orientation: 'horizontal'
-            size_hint_y: None
-            height: '48dp'
-            padding: '2dp'
-            spacing: '2dp'
-            canvas:
-                Color:
-                    rgb: actionbar_bg_color
-                Rectangle:
-                    pos: self.pos
-                    size: self.size
+        SmartieActionBar: #bottom action bar
             ActionBarButton:
                 text: u'\uf011' #power
                 on_release: root.view_node_message(root.ScreenName, root.NodeMessageId)
