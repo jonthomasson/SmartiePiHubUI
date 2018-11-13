@@ -1,16 +1,15 @@
 #:kivy 1.10.1
+#:include smartiepi_styles.kv
 
 <MessageDefault>:
     orientation: 'vertical'
     padding: '2dp'
-
     canvas:
         Color:
             rgb: actionbar_color
         Rectangle:
             pos: self.pos
             size: self.size
-
 MessageDefaultScreen:
     name: 'MessageDefault'
     MessageDefault:
@@ -24,7 +23,6 @@ MessageDefaultScreen:
                     pos: self.pos
                     size: self.size
                     #source: 'atlas://images/smartiepi/ab_button1'
-
             Label: 
                 text: "Node: {}".format(self.parent.parent.parent.node_name)
             Label: 
