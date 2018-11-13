@@ -95,18 +95,6 @@ class MainScreen(SmartiePiScreen):
         rows_warn = []
         rows_alert = []
 
-        
-        #using try block instead of hasattr for attribute checking here because most of the time this will not fail
-        try:
-            main_view_info = self.ids.main_view_info
-            main_view_warn = self.ids.main_view_warn
-            main_view_alert = self.ids.main_view_alert
-
-        except AttributeError:
-            main_view_info = app.root.ids.main_view_info
-            main_view_warn = app.root.ids.main_view_warn
-            main_view_alert = app.root.ids.main_view_alert
-
         for row in rows:
             if row[5] == 1:
                 #info row
@@ -118,6 +106,22 @@ class MainScreen(SmartiePiScreen):
                 #alert row
                 rows_alert.append(row)
 
+        #using try block instead of hasattr for attribute checking here because most of the time this will not fail
+        try:
+            main_view_info = self.ids.tab_info.child.child
+            print(main_view_info)
+            #main_view_info = self.ids.main_view_info
+            #main_view_warn = self.ids.main_view_warn
+            #main_view_alert = self.ids.main_view_alert
+
+        except AttributeError:
+            main_view_info = self.ids.tab_info.content.children[0]
+            main_view_warn = self.ids.tab_warnings.content.children[0]
+            main_view_alert = self.ids.tab_alerts.content.children[0]
+
+            #main_view_info = app.root.ids.main_view_info
+            #main_view_warn = app.root.ids.main_view_warn
+            #main_view_alert = app.root.ids.main_view_alert
             
         main_view_info.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName, IsInfo, IsWarn, IsAlert in rows_info]
         main_view_warn.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName, IsInfo, IsWarn, IsAlert in rows_warn]

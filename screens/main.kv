@@ -29,6 +29,37 @@
         text: u'\uf1f8' #trash
         on_release: root.delete_node_message(root.NodeMessageId)
 
+<MainScreenTab@TabbedPanelItem>:
+    font_name: 'Font-Awesome-Solid.ttf'
+    font_size: '30dp'
+    background_normal: 'atlas://images/smartiepi/button_default'
+    background_down: 'atlas://images/smartiepi/tab_selected'
+    BoxLayout:
+        orientation: 'vertical'
+        padding: '4dp'
+        canvas:
+            Color:
+                rgb: mainscreen_bg_color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        MainRecycleView:
+            id: main_view_info
+            viewclass: "MessageView"
+            RecycleBoxLayout:
+                default_size: None, dp(56)
+                default_size_hint: 1, None
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                spacing: '4dp'
+                canvas:
+                    Color:
+                        rgba: 0, 0, 1
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+
 MainScreen:
     name: 'Main'
     id: main_screen
@@ -36,115 +67,17 @@ MainScreen:
     TabbedPanel:
         id: tp
         do_default_tab: False
-        TabbedPanelItem:
-            id: tab_messages
-            font_name: 'Font-Awesome-Solid.ttf'
-            font_size: '30dp'
+        MainScreenTab:
+            id: tab_info
             text: u'\uf05a' #info circle
-            background_normal: 'atlas://images/smartiepi/button_default'
-            background_down: 'atlas://images/smartiepi/tab_selected'
-            BoxLayout:
-                orientation: 'vertical'
-                padding: '4dp'
-                canvas:
-                    Color:
-                        rgb: mainscreen_bg_color
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-                MainRecycleView:
-                    id: main_view_info
-                    viewclass: "MessageView"
-                    
-                    RecycleBoxLayout:
-                        default_size: None, dp(56)
-                        default_size_hint: 1, None
-                        size_hint_y: None
-                        height: self.minimum_height
-                        orientation: 'vertical'
-                        spacing: '4dp'
-                    
-                        canvas:
-                            Color:
-                                rgba: 0, 0, 1
-                            Rectangle:
-
-                                pos: self.pos
-                                size: self.size
-                
             
-            
-        TabbedPanelItem:
+        MainScreenTab:
             id: tab_warnings
-            font_name: 'Font-Awesome-Solid.ttf'
-            font_size: '30dp'
-            text: u'\uf071' #exclamation triangle
             color: mainscreen_warning
-            background_normal: 'atlas://images/smartiepi/button_default'
-            background_down: 'atlas://images/smartiepi/tab_selected'
-            BoxLayout:
-                orientation: 'vertical'
-                padding: '4dp'
-
-
-                canvas:
-                    Color:
-                        rgb: 0, 0, 0
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-                MainRecycleView:
-                    id: main_view_warn
-                    viewclass: "MessageView"
-                    
-                    RecycleBoxLayout:
-                        default_size: None, dp(56)
-                        default_size_hint: 1, None
-                        size_hint_y: None
-                        height: self.minimum_height
-                        orientation: 'vertical'
-                        spacing: '4dp'
-                    
-                        canvas:
-                            Color:
-                                rgba: 0, 0, 1
-                            Rectangle:
-
-                                pos: self.pos
-                                size: self.size
-        TabbedPanelItem:
-            id: tab_warnings
-            font_name: 'Font-Awesome-Solid.ttf'
-            font_size: '30dp'
-            text: u'\uf06a' #exclamation circle
+            text: u'\uf071' #exclamation triangle
+           
+        MainScreenTab:
+            id: tab_alerts
             color: mainscreen_alert
-            background_normal: 'atlas://images/smartiepi/button_default'
-            background_down: 'atlas://images/smartiepi/tab_selected'
-            BoxLayout:
-                orientation: 'vertical'
-                padding: '4dp'
-                canvas:
-                    Color:
-                        rgb: 0, 0, 0
-                    Rectangle:
-                        pos: self.pos
-                        size: self.size
-                MainRecycleView:
-                    id: main_view_alert
-                    viewclass: "MessageView"
-                    
-                    RecycleBoxLayout:
-                        default_size: None, dp(56)
-                        default_size_hint: 1, None
-                        size_hint_y: None
-                        height: self.minimum_height
-                        orientation: 'vertical'
-                        spacing: '4dp'
-                    
-                        canvas:
-                            Color:
-                                rgba: 0, 0, 1
-                            Rectangle:
-
-                                pos: self.pos
-                                size: self.size
+            text: u'\uf06a' #exclamation circle
+           
