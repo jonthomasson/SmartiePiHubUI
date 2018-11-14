@@ -92,7 +92,7 @@
                 text: u'\uf028' #volume
             ActionBarToggleButton:
                 text: u'\uf1eb' #wifi
-                on_release: root.show_power_menu(True) if self.state == 'down' else root.show_power_menu(False)
+                on_release: root.toggle_wifi(True) if self.state == 'down' else root.toggle_wifi(False)
             Label:
                 id: date_and_time
                 text: ''

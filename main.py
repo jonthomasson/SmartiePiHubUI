@@ -46,6 +46,12 @@ class SmartiePiHub(Widget):
         else:
             power_menu = PowerMenu()
             self.add_widget(power_menu)
+
+    def toggle_wifi(self, enable):
+        if(enable == True):
+            print("enable wifi")
+        else:
+            print("disable wifi")
             
 class SmartiePiScreen(Screen):
     app= App.get_running_app()
