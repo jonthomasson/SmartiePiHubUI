@@ -15,9 +15,8 @@
                 padding: '8dp'
                 size_hint: (1, 1) if root.fullscreen else (.8, None)
                 height: self.height if root.fullscreen else self.minimum_height
-                
+
 <PowerMenu@FloatLayout>:
-    id: pmenu
     canvas:
         Color:
             rgba: 0, 0, 0, 0
@@ -31,10 +30,13 @@
         orientation: 'vertical'
         BubbleButton:
             text: 'Exit'
+            on_release: root.power_exit()
         BubbleButton:
             text: 'Shutdown'
+            on_release: root.power_shutdown()
         BubbleButton:
             text: 'Restart'
+            on_release: root.power_restart()
 
 <SmartieActionBar@BoxLayout>:
     orientation: 'horizontal'
@@ -80,7 +82,7 @@
         SmartieActionBar: #bottom action bar
             ActionBarToggleButton:
                 text: u'\uf011' #power
-                on_release: root.show_power_menu()
+                on_release: root.show_power_menu(False) if self.state == 'down' else root.show_power_menu(True)
             Label:
                 text: 'System Health:' #this acts as a spacer between left and right buttons
                 color: default_text
@@ -90,6 +92,7 @@
                 text: u'\uf028' #volume
             ActionBarToggleButton:
                 text: u'\uf1eb' #wifi
+                on_release: root.show_power_menu(True) if self.state == 'down' else root.show_power_menu(False)
             Label:
                 id: date_and_time
                 text: ''

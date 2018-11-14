@@ -9,7 +9,7 @@ from kivy.uix.recycleview.views import RecycleDataViewBehavior
 from kivy.uix.recycleboxlayout import RecycleBoxLayout
 from kivy.uix.floatlayout import FloatLayout
 from kivy.properties import NumericProperty, StringProperty, BooleanProperty,\
-    ListProperty
+    ListProperty, ObjectProperty
 from kivy.clock import Clock
 from kivy.animation import Animation
 from kivy.uix.screenmanager import Screen
@@ -28,15 +28,25 @@ import sqlite3
 db_file = 'data/smartiepi.db'
 
 class PowerMenu(FloatLayout):
-    pass
+    def power_exit(self):
+        print("exiting...")
+
+    def power_shutdown(self):
+        print("shutting down...")
+
+    def power_restart(self):
+        print("restarting...")
 
 class SmartiePiHub(Widget):
-    def show_power_menu(self):
-        menu = PowerMenu()
-        self.add_widget(menu)
 
-   
-
+    def show_power_menu(self, hide):
+        if(hide == True):
+            power_menu = self.children[0]
+            self.remove_widget(power_menu)
+        else:
+            power_menu = PowerMenu()
+            self.add_widget(power_menu)
+            
 class SmartiePiScreen(Screen):
     app= App.get_running_app()
     fullscreen = BooleanProperty(False)
