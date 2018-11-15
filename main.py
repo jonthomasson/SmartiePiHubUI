@@ -2,6 +2,7 @@ import time
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.uix.button import Button
+from kivy.uix.togglebutton import ToggleButton
 from os.path import dirname, join
 from kivy.lang import Builder
 from kivy.uix.recycleview import RecycleView
@@ -37,9 +38,15 @@ class PowerMenu(FloatLayout):
     def power_restart(self):
         print("restarting...")
 
+class VolumeControl(FloatLayout):
+    app= App.get_running_app()
+    
+
 class SmartiePiHub(Widget):
 
     def show_power_menu(self, hide):
+        print(self.pos)
+
         if(hide == True):
             power_menu = self.children[0]
             self.remove_widget(power_menu)
@@ -47,7 +54,11 @@ class SmartiePiHub(Widget):
             power_menu = PowerMenu()
             self.add_widget(power_menu)
 
+
+
     def toggle_wifi(self, enable):
+        print(self.pos)
+
         if(enable == True):
             print("enable wifi")
         else:
@@ -101,7 +112,21 @@ class SmartiePiApp(App):
     def update_clock(self, dt):
         self.root.ids.date_and_time.text = time.strftime("%I:%M %p\n%m/%d/%Y")
 
-    
+class SmartieActionBar(BoxLayout):
+    pass
+
+class ActionBarToggleButton(ToggleButton):
+    def show_volume_control(self, hide):
+        print(self.pos)
+        if(hide == True):
+            volume_control = self.children[0]
+            self.remove_widget(volume_control)
+        else:
+            volume_control = VolumeControl()
+            volume_control.pos_hint = {'top': 1, 'y': .4}
+
+            volume_control.pos = self.pos
+            self.add_widget(volume_control)
 
 class MainScreen(SmartiePiScreen):
     
