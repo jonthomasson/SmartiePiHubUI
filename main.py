@@ -116,16 +116,13 @@ class SmartieActionBar(BoxLayout):
     pass
 
 class ActionBarToggleButton(ToggleButton):
-    def show_volume_control(self, hide):
-        print(self.pos)
-        if(hide == True):
+    def show_volume_control(self):
+        if(self.state == "normal"):
             volume_control = self.children[0]
             self.remove_widget(volume_control)
         else:
             volume_control = VolumeControl()
-            volume_control.pos_hint = {'top': 1, 'y': .4}
-
-            volume_control.pos = self.pos
+            volume_control.pos = [self.pos[0] - (self.width/2), self.height]
             self.add_widget(volume_control)
 
 class MainScreen(SmartiePiScreen):

@@ -19,7 +19,7 @@
     size: root.size
     canvas.before:
         Color:
-            rgba: 0, 0, 1, 1
+            rgba: 0, 0, 1, 0
         Rectangle:
             size: root.width, root.height
             pos: root.pos
@@ -114,7 +114,7 @@
                 text: u'\uf240' #battery
             ActionBarToggleButton:
                 text: u'\uf028' #volume
-                on_release: self.show_volume_control(False) if self.state == 'down' else root.show_volume_control(True)
+                on_release: self.show_volume_control()
             ActionBarToggleButton:
                 text: u'\uf1eb' #wifi
                 on_release: root.toggle_wifi(True) if self.state == 'down' else root.toggle_wifi(False)
