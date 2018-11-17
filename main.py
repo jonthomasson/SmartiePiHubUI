@@ -38,31 +38,16 @@ class PowerMenu(FloatLayout):
     def power_restart(self):
         print("restarting...")
 
-class VolumeControl(FloatLayout):
-    app= App.get_running_app()
+
     
 
 class SmartiePiHub(Widget):
 
-    def show_power_menu(self, hide):
-        print(self.pos)
-
-        if(hide == True):
-            power_menu = self.children[0]
-            self.remove_widget(power_menu)
-        else:
-            power_menu = PowerMenu()
-            self.add_widget(power_menu)
+    pass
 
 
 
-    def toggle_wifi(self, enable):
-        print(self.pos)
 
-        if(enable == True):
-            print("enable wifi")
-        else:
-            print("disable wifi")
             
 class SmartiePiScreen(Screen):
     app= App.get_running_app()
@@ -115,6 +100,32 @@ class SmartiePiApp(App):
 class SmartieActionBar(BoxLayout):
     pass
 
+class VolumeControl(FloatLayout):
+    
+
+    def volume_value_changed(self, value):
+        self.app= App.get_running_app()
+        #get reference to action bar volume button
+        toggle_volume = self.app.root.ids.toggle_volume
+        #set appropriate text icon for action bar volume button
+        if(value == 0):
+            toggle_volume.text = u'\uf6a9' #volume-mute
+        elif(value < 50):
+            toggle_volume.text = u'\uf026' #volume-off
+        elif(value < 150):
+            toggle_volume.text = u'\uf027' #volume-down
+        elif(value > 150):
+            toggle_volume.text = u'\uf028' #volume-up
+
+    def volume_touch_up(self):
+        volume_slider = self.ids.volume_slider
+
+        #update volume on raspi and play sample sound to test...
+        print('setting raspi volume to ', volume_slider.value)
+
+class BatteryStatus(FloatLayout):
+    pass
+
 class ActionBarToggleButton(ToggleButton):
     def show_volume_control(self):
         if(self.state == "normal"):
@@ -122,8 +133,35 @@ class ActionBarToggleButton(ToggleButton):
             self.remove_widget(volume_control)
         else:
             volume_control = VolumeControl()
-            volume_control.pos = [self.pos[0] - (self.width/2), self.height]
+            volume_control.pos = [self.pos[0], self.height]
+            volume_control.size = self.width, 250
             self.add_widget(volume_control)
+    
+    def show_battery_status(self):
+        if(self.state == "normal"):
+            battery_status = self.children[0]
+            self.remove_widget(battery_status)
+        else:
+            battery_status = BatteryStatus()
+            battery_status.pos = [self.pos[0], self.height]
+            self.add_widget(battery_status)
+
+    def toggle_wifi(self):
+        if(self.state == 'down'):
+            print("enable wifi")
+        else:
+            print("disable wifi")
+
+    def show_power_menu(self):
+        if(self.state == 'normal'):
+            power_menu = self.children[0]
+            self.remove_widget(power_menu)
+        else:
+            power_menu = PowerMenu()
+            power_menu.pos = [self.pos[0], self.height]
+            self.add_widget(power_menu)
+    
+
 
 class MainScreen(SmartiePiScreen):
     

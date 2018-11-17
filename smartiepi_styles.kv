@@ -24,10 +24,11 @@
 <ActionBarToggleButton@ToggleButton>:
     font_name: 'Font-Awesome-Solid.ttf'
     font_size: '30dp'
-    color: actionbar_color
+    color: actionbar_color if self.state == 'normal' else default_text
     size_hint_x: None
     width: self.height
     background_normal: 'atlas://images/smartiepi/ab_button1'
+    background_down: 'atlas://images/smartiepi/button_default'
 
 <DefaultButton@Button>:
     font_name: 'Font-Awesome-Solid.ttf'
