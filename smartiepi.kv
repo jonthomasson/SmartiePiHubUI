@@ -16,6 +16,58 @@
                 size_hint: (1, 1) if root.fullscreen else (.8, None)
                 height: self.height if root.fullscreen else self.minimum_height
 
+<SystemHealth@BoxLayout>:
+    orientation: 'horizontal'
+    #padding: '1dp'
+    spacing: '2dp'
+   
+    canvas.before:
+        Color:
+            rgb: default_button_bg
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Label:
+        text: ''
+        canvas.before:
+            Color:
+                rgb: 0,1,0,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+    Label:
+        text: ''
+        canvas.before:
+            Color:
+                rgb: 0,1,0,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+    Label:
+        text: ''
+        canvas.before:
+            Color:
+                rgb: 0,1,0,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+    Label:
+        text: ''
+        canvas.before:
+            Color:
+                rgb: 0,1,0,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+    Label:
+        text: ''
+        canvas.before:
+            Color:
+                rgb: 1,1,0,1
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
 <BatteryStatus@FloatLayout>:
     size: root.size
     canvas.before:
@@ -131,6 +183,7 @@
         SmartieActionBar: #top action bar
             ActionBarButton:
                 text: u'\uf013' #cog
+                on_release: app.open_settings()
             Label:
                 font_name: 'freedom.ttf'
                 font_size: '40dp'
@@ -150,8 +203,15 @@
                 text: u'\uf011' #power
                 on_release: self.show_power_menu()
             Label:
-                text: 'System Health:' #this acts as a spacer between left and right buttons
+                id: system_health_text
+                text: 'System Health: GOOD' #this acts as a spacer between left and right buttons
                 color: default_text
+                #size_hint_x: None
+            SystemHealth:
+                id: system_health
+                size_hint_x: None
+            Label:
+                text: ' '
             ActionBarToggleButton:
                 text: u'\uf240' #battery
                 on_release: self.show_battery_status()

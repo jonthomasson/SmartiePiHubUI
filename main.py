@@ -38,17 +38,12 @@ class PowerMenu(FloatLayout):
     def power_restart(self):
         print("restarting...")
 
-
-    
-
 class SmartiePiHub(Widget):
-
     pass
 
+class SystemHealth(BoxLayout):
+    pass
 
-
-
-            
 class SmartiePiScreen(Screen):
     app= App.get_running_app()
     fullscreen = BooleanProperty(False)
@@ -63,7 +58,10 @@ class SmartiePiApp(App):
         self.app=App.get_running_app()
         hub = SmartiePiHub()
         self.title = 'SmartiePi Hub'
-        Clock.schedule_interval(self.update_clock, 1 / 60.)
+        Clock.schedule_interval(self.update_clock, 1) #run once a second
+        Clock.schedule_interval(self.update_system_health, 60) #run once a minute
+        Clock.schedule_once(self.update_system_health,0)
+        
         sm = hub.ids.sm
         screen = self.get_screen_file('Main')
         sm.add_widget(screen)
@@ -96,6 +94,21 @@ class SmartiePiApp(App):
 
     def update_clock(self, dt):
         self.root.ids.date_and_time.text = time.strftime("%I:%M %p\n%m/%d/%Y")
+
+    def update_system_health(self, dt):
+        print("updating system health")
+        app= App.get_running_app()
+        system_health = app.root.ids.system_health
+        system_health.size =( 50, 10)
+        print(system_health)
+        #get list of current node messages
+
+        #determine count of warning and alert messages
+
+        #add appropriate colored label control to boxlayout in loop
+
+        #update system_health label
+
 
 class SmartieActionBar(BoxLayout):
     pass
