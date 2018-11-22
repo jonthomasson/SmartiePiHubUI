@@ -2,6 +2,10 @@ import time
 from kivy.app import App
 from kivy.uix.widget import Widget
 from kivy.uix.button import Button
+from kivy.uix.label import Label
+from kivy.graphics import Rectangle
+from kivy.graphics import Color
+from kivy.utils import *
 from kivy.uix.togglebutton import ToggleButton
 from os.path import dirname, join
 from kivy.lang import Builder
@@ -95,19 +99,44 @@ class SmartiePiApp(App):
     def update_clock(self, dt):
         self.root.ids.date_and_time.text = time.strftime("%I:%M %p\n%m/%d/%Y")
 
+    def get_node_message_count(self, type):
+        con = sqlite3.connect(db_file)
+        cur = con.cursor()
+
+        app= App.get_running_app()
+        cur.execute("select count(*) from NodeMessages nm inner join Messages m on nm.MessageId = m.Id where m.IsInfo = 1")
+        
+        row = cur.fetchone()
+        count = row[0]
+        con.close()
+
+        return count
+
     def update_system_health(self, dt):
-        print("updating system health")
         app= App.get_running_app()
         system_health = app.root.ids.system_health
-        system_health.size =( 50, 10)
-        print(system_health)
+        #system_health.size =( 50, 10)
+        system_health_rv = system_health.ids.system_health_rv
+        rows = []
         #get list of current node messages
 
         #determine count of warning and alert messages
+        count_warning = self.get_node_message_count('warning')
+        count_alert = self.get_node_message_count('alert')
 
-        #add appropriate colored label control to boxlayout in loop
+        for x in range(0, 4):
+            rows.append('00ff00')
+        for x in range(0, count_warning):
+            rows.append('ffff00')
+        for x in range(0, count_alert):
+            rows.append('ff0000')
+        
+        system_health_rv.data = [{'BgColor':"{}".format(BgColor)} for BgColor in rows]
+
 
         #update system_health label
+    
+
 
 
 class SmartieActionBar(BoxLayout):
@@ -275,6 +304,15 @@ class MessageDefault(BoxLayout):
     
         
     
+class SystemHealthView(RecycleDataViewBehavior, Label):
+    BgColor = StringProperty()
+
+    def get_color(self, bg_color):
+        print(bg_color)
+        if(bg_color != ''):
+            return get_color_from_hex(bg_color)
+        else:
+            return get_color_from_hex('ffffff')
 
 class MessageView(RecycleDataViewBehavior, BoxLayout):
     
