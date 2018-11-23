@@ -29,6 +29,7 @@ import sqlite3
 #Button.background_normal = 'images/button.png'
 #Button.background_color = (.1, .1, .15)
 #Button.border = (30,30,30,30)
+Label.bold = True
 
 db_file = 'data/smartiepi.db'
 
@@ -102,9 +103,10 @@ class SmartiePiApp(App):
     def get_node_message_count(self, type):
         con = sqlite3.connect(db_file)
         cur = con.cursor()
+        message_type = "m.IsWarn = 1" if type == "warning" else "m.IsAlert = 1"
 
-        app= App.get_running_app()
-        cur.execute("select count(*) from NodeMessages nm inner join Messages m on nm.MessageId = m.Id where m.IsInfo = 1")
+        cur.execute("select count(*) from NodeMessages nm inner join Messages m on nm.MessageId = m.Id where {mtype}".\
+        format(mtype=message_type))
         
         row = cur.fetchone()
         count = row[0]
@@ -117,6 +119,10 @@ class SmartiePiApp(App):
         system_health = app.root.ids.system_health
         #system_health.size =( 50, 10)
         system_health_rv = system_health.ids.system_health_rv
+        system_health_label = system_health.ids.system_health_label
+        system_health_status = 'GOOD'
+        system_health_message = ''
+        system_health_color = '00ff00'
         rows = []
         #get list of current node messages
 
@@ -124,20 +130,48 @@ class SmartiePiApp(App):
         count_warning = self.get_node_message_count('warning')
         count_alert = self.get_node_message_count('alert')
 
-        for x in range(0, 4):
+        if(count_warning > 3):
+            count_warning = 3
+        if(count_alert > 3):
+            count_alert = 3
+
+        for x in range(0, 3):
             rows.append('00ff00')
         for x in range(0, count_warning):
             rows.append('ffff00')
+        for x in range(0, 3 - count_warning):
+            rows.append('222200')
         for x in range(0, count_alert):
             rows.append('ff0000')
+        for x in range(0, 3 - count_alert):
+            rows.append('220000')
         
         system_health_rv.data = [{'BgColor':"{}".format(BgColor)} for BgColor in rows]
 
-
         #update system_health label
-    
+        if(count_alert > 3):
+            system_health_status = 'DEFCON 20'
+        elif(count_alert == 2):
+            system_health_status = 'CRITICAL'
+        elif(count_alert == 1):
+            system_health_status = 'VERY BAD'
+        elif(count_warning == 3):
+            system_health_status = 'SERIOUS'
+        elif(count_warning == 2):
+            system_health_status = 'NOT GOOD'
+        elif(count_warning == 1):
+            system_health_status = 'ELEVATED'
 
+        if(count_alert > 0):
+            system_health_color = 'ff0000'
+        elif(count_warning > 0):
+            system_health_color = 'ffff00'
+        else:
+            system_health_color = '00ff00'
 
+        system_health_message = "SYSTEM HEALTH: [color={color}][b]{status}[/b][/color]".format(color = system_health_color, status = system_health_status)
+
+        system_health_label.text = system_health_message
 
 class SmartieActionBar(BoxLayout):
     pass
@@ -308,7 +342,7 @@ class SystemHealthView(RecycleDataViewBehavior, Label):
     BgColor = StringProperty()
 
     def get_color(self, bg_color):
-        print(bg_color)
+        #print(bg_color)
         if(bg_color != ''):
             return get_color_from_hex(bg_color)
         else:
