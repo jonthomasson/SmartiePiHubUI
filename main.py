@@ -22,6 +22,7 @@ from kivy.uix.behaviors import FocusBehavior
 from kivy.uix.recycleview.layout import LayoutSelectionBehavior
 from kivy.uix.boxlayout import BoxLayout
 import sqlite3
+from settings import settings_json
 
 
 #initialize any default styles here
@@ -72,6 +73,23 @@ class SmartiePiApp(App):
         sm.add_widget(screen)
         sm.current = 'Main'
         return hub
+    
+    def build_config(self, config):
+        config.setdefaults('SmartiePi', {
+            'sendtextinfo': False,
+            'sendtextwarning': False,
+            'sendtextalert': False,
+            'numberstotext': '',
+            'sendemailinfo': False,
+            'sendemailwarning': False,
+            'sendemailalert': False,
+            'emails': '',
+            'enablewifi': False,
+            'defaultvolume': 100
+        })
+    
+    def build_settings(self, settings):
+        settings.add_json_panel('SmartiePi', self.config, data=settings_json)
         
     def load_screen(self, screen_name):
         app= App.get_running_app()
