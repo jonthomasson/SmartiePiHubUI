@@ -62,6 +62,7 @@ class SmartiePiApp(App):
 
     def build(self):
         self.app=App.get_running_app()
+        self.use_kivy_settings = True
         hub = SmartiePiHub()
         self.title = 'SmartiePi Hub'
         Clock.schedule_interval(self.update_clock, 1) #run once a second
@@ -72,8 +73,18 @@ class SmartiePiApp(App):
         screen = self.get_screen_file('Main')
         sm.add_widget(screen)
         sm.current = 'Main'
+
+        self.configure_startup(hub)
         return hub
     
+    def configure_startup(self, hub):
+        #configure app with our saved settings
+        enable_wifi = self.config.get('SmartiePi', 'enablewifi')
+        default_volume = self.config.get('SmartiePi', 'defaultvolume')
+        #print(enable_wifi)
+        hub.ids.toggle_wifi.state = 'down' if enable_wifi == 1 else 'normal'
+
+
     def build_config(self, config):
         config.setdefaults('SmartiePi', {
             'sendtextinfo': False,
@@ -90,6 +101,10 @@ class SmartiePiApp(App):
     
     def build_settings(self, settings):
         settings.add_json_panel('SmartiePi', self.config, data=settings_json)
+    
+    #use this method to set any appropriate app behavior whenever a setting is changed
+    def on_config_change(self, config, section, key, value):
+        print(config, section, key, value)
         
     def load_screen(self, screen_name):
         app= App.get_running_app()
