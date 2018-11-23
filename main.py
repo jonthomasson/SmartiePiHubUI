@@ -117,7 +117,6 @@ class SmartiePiApp(App):
     def update_system_health(self, dt):
         app= App.get_running_app()
         system_health = app.root.ids.system_health
-        #system_health.size =( 50, 10)
         system_health_rv = system_health.ids.system_health_rv
         system_health_label = system_health.ids.system_health_label
         system_health_status = 'GOOD'
@@ -134,6 +133,8 @@ class SmartiePiApp(App):
             count_warning = 3
         if(count_alert > 3):
             count_alert = 3
+        if(count_alert > 0):
+            count_warning = 3
 
         for x in range(0, 3):
             rows.append('00ff00')
