@@ -5,7 +5,7 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.graphics import Rectangle
 from kivy.graphics import Color
-from kivy.utils import *
+from kivy.utils import get_color_from_hex
 from kivy.uix.togglebutton import ToggleButton
 from os.path import dirname, join
 from kivy.lang import Builder
@@ -23,16 +23,12 @@ from kivy.uix.recycleview.layout import LayoutSelectionBehavior
 from kivy.uix.boxlayout import BoxLayout
 import sqlite3
 from settings import settings_json
+from screens import message_default
+from screens import main
+from screens.shared.system import SmartiePiScreen, db_file
 
-
-#initialize any default styles here
-#Button.background_normal = ''
-#Button.background_normal = 'images/button.png'
-#Button.background_color = (.1, .1, .15)
-#Button.border = (30,30,30,30)
+#initialize any default widget styles here
 Label.bold = True
-
-db_file = 'data/smartiepi.db'
 
 class PowerMenu(FloatLayout):
     def power_exit(self):
@@ -49,10 +45,6 @@ class SmartiePiHub(Widget):
 
 class SystemHealth(BoxLayout):
     pass
-
-class SmartiePiScreen(Screen):
-    app= App.get_running_app()
-    fullscreen = BooleanProperty(False)
 
 class SmartiePiApp(App):
     index = NumericProperty(-1)
@@ -83,7 +75,6 @@ class SmartiePiApp(App):
         default_volume = self.config.get('SmartiePi', 'defaultvolume')
         #print(enable_wifi)
         hub.ids.toggle_wifi.state = 'down' if enable_wifi == 1 else 'normal'
-
 
     def build_config(self, config):
         config.setdefaults('SmartiePi', {
@@ -211,8 +202,6 @@ class SmartieActionBar(BoxLayout):
     pass
 
 class VolumeControl(FloatLayout):
-    
-
     def volume_value_changed(self, value):
         self.app= App.get_running_app()
         #get reference to action bar volume button
@@ -271,107 +260,6 @@ class ActionBarToggleButton(ToggleButton):
             power_menu.pos = [self.pos[0], self.height]
             self.add_widget(power_menu)
     
-
-
-class MainScreen(SmartiePiScreen):
-    
-    def on_enter(self):
-        Clock.schedule_once(self.bind_node_messages,0)
-
-    def bind_node_messages(self, dt):
-        con = sqlite3.connect(db_file)
-        cur = con.cursor()
-
-        app= App.get_running_app()
-        cur.execute("select n.Name as Node, m.Message, nm.TimeStamp, nm.Id as NodeMessageId, s.Name as ScreenName, m.IsInfo, m.IsWarn, m.IsAlert from NodeMessages nm inner join Messages m on nm.MessageId = m.Id inner join Nodes n on n.Id = nm.NodeId inner join Screens s on m.ScreenId = s.Id order by nm.id desc")
-        
-        rows = cur.fetchall()
-        con.close()
-        rows_info = []
-        rows_warn = []
-        rows_alert = []
-
-        for row in rows:
-            if row[5] == 1:
-                #info row
-                rows_info.append(row)
-            if row[6] == 1:
-                #warn row
-                rows_warn.append(row)
-            if row[7] == 1:
-                #alert row
-                rows_alert.append(row)
-
-        main_view_info = self.ids.tab_info.content.children[0]
-        main_view_warn = self.ids.tab_warnings.content.children[0]
-        main_view_alert = self.ids.tab_alerts.content.children[0]
-            
-        main_view_info.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName, IsInfo, IsWarn, IsAlert in rows_info]
-        main_view_warn.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName, IsInfo, IsWarn, IsAlert in rows_warn]
-        main_view_alert.data = [{'Node':"{}".format(Node), 'Message':"{}".format(Message), 'TimeStamp':"{}".format(TimeStamp), 'NodeMessageId':"{}".format(NodeMessageId), 'ScreenName':"{}".format(ScreenName)} for Node, Message, TimeStamp, NodeMessageId, ScreenName, IsInfo, IsWarn, IsAlert in rows_alert]
-
-
-class MainRecycleView(RecycleView):
-    pass
-    
-
-    #def __init__(self, **kwargs):
-    #    super(MainRecycleView, self).__init__(**kwargs)
-        
-    #    self.bind_node_messages()
-
-
-class MessageDefaultScreen(SmartiePiScreen):
-    node_message_id = StringProperty()
-    node_name = StringProperty()
-    node_message = StringProperty()
-    node_type = StringProperty()
-    node_description = StringProperty()
-    time_stamp = StringProperty()
-
-    def on_enter(self):
-        Clock.schedule_once(self.bind_node_message,0)
-        #print("got to message default on_enter")
-
-    def bind_node_message(self, dt):
-        #get current node_message_id
-        self.app=App.get_running_app()
-        self.node_message_id = self.app.node_message_id
-
-        con = sqlite3.connect(db_file)
-        cur = con.cursor()
-
-        app= App.get_running_app()
-        cur.execute("select n.Name as Node, m.Message, n.Type, n.Description, nm.TimeStamp  from NodeMessages nm inner join Messages m on nm.MessageId = m.Id inner join Nodes n on n.Id = nm.NodeId inner join Screens s on m.ScreenId = s.Id where nm.Id = {id}".\
-        format(id=self.node_message_id))
-        
-        row = cur.fetchone()
-        self.node_name = row[0]
-        self.node_message = row[1]
-        #self.node_type = row[2]
-        self.node_description = row[3]
-        self.time_stamp = row[4]
-
-        con.close()
-
-    def back_to_messages(self):
-        self.app=App.get_running_app()
-        
-        
-        sm = self.app.root.ids.sm
-        sm.transition.direction = 'right'
-        sm.current = 'Main'
-
-class MessageDefault(BoxLayout):
-    
-
-    def __init__(self, **kwargs):
-        super(MessageDefault, self).__init__(**kwargs)
-       
-
-    
-        
-    
 class SystemHealthView(RecycleDataViewBehavior, Label):
     BgColor = StringProperty()
 
@@ -381,42 +269,6 @@ class SystemHealthView(RecycleDataViewBehavior, Label):
             return get_color_from_hex(bg_color)
         else:
             return get_color_from_hex('ffffff')
-
-class MessageView(RecycleDataViewBehavior, BoxLayout):
-    
-    Node = StringProperty("")
-    Message = StringProperty("")
-    TimeStamp = StringProperty("")
-    NodeMessageId = StringProperty("")
-    ScreenName = StringProperty("")
-
-    index = None
-
-    def delete_node_message(self,node_message_id):
-        con = sqlite3.connect(db_file)
-        cur = con.cursor()
-
-        app= App.get_running_app()
-        cur.execute("delete from nodemessages where id = {id}".\
-        format(id=node_message_id))
-        
-        con.commit()
-        con.close()
-
-        #app.root.ids.main_screen.bind_node_messages()
-        self.parent.parent.parent.parent.parent.parent.bind_node_messages(0)
-
-        
-
-    def view_node_message(self, screen_name, node_message_id):
-        self.app=App.get_running_app()
-        
-        sm = self.app.root.ids.sm
-        sm.transition.direction = 'left'
-        self.app.node_message_id = node_message_id
-        self.app.load_screen(screen_name)
-
-
 
 if __name__ == '__main__':
     SmartiePiApp().run()
